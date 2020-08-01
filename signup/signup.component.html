@@ -1,0 +1,47 @@
+    <mat-card style="background:none;">
+      <mat-card-title class="parent">SIGNUP NEW ACCOUNT</mat-card-title>
+      <form [formGroup]="signupForm">
+        <div class="input-container">
+          <i class="fa fa-user icon"></i>
+          <select class="input-field" formControlName="user" [class.is-invalid]="uservalid">
+           <option selected value="">select your user type</option>
+           <option>Chief Minister</option>
+           <option>Educational Minister</option>
+           <option>Chief Educational Officier</option>
+           <option>District Educational Officier</option>
+           </select>     
+        </div>
+        <small *ngIf="signupForm.get('user').touched && signupForm.get('user').invalid" class="text-danger">User type is required</small><br>
+
+        
+        <div class="input-container">
+          <i class="fa fa-envelope icon"></i>
+          <input class="input-field" type="text" placeholder="Email" required formControlName="email">
+        </div>
+        <div class="input-container">
+          <i class="fa fa-key icon"></i>
+          <input class="input-field" [type]="hide1 ? 'password' : 'text'" placeholder="PassCode for admin signup" formControlName="passCode" [class.is-invalid]="signupForm.get('passCode').touched && signupForm.get('passCode').invalid">
+          <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
+                <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </div>
+        <div class="input-container">
+          <i class="fa fa-key icon"></i>
+          <input class="input-field" [type]="hide1 ? 'password' : 'text'" placeholder="Password" formControlName="password" [class.is-invalid]="signupForm.get('passCode').touched && signupForm.get('passCode').invalid">
+          <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
+                <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </div>
+        <small *ngIf="signupForm.get('password').touched && signupForm.get('password').invalid" class="text-danger">Password is required</small><br>
+        <div class="input-container">
+          <i class="fa fa-key icon"></i>
+          <input class="input-field" [type]="hide1 ? 'password' : 'text'" placeholder="confirm password" formControlName="confirmpassword" [class.is-invalid]="signupForm.get('passCode').touched && signupForm.get('passCode').invalid">
+          <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
+                <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </div>
+      </form>      
+      <button type="button"  class="btn btn-outline-success btn-lg" (click)="register(signupForm.get('email').value,signupForm.get('password').value,signupForm.get('user').value,signupForm.get('passCode').value)" style="width: 100%;border-radius: 20px;">SignUp</button>
+      
+    </mat-card>
+
