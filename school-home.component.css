@@ -1,0 +1,24 @@
+.tab{
+    background: blue;
+}
+.marquee{
+    width: 100%;
+}
+.flex{
+    display:flex;
+}
+.flex img{
+    width: 15%;
+    height: 15%;
+}
+.flex div label{
+    margin-left: 20px;
+}
+.example-tab-icon {
+    margin-right: 8px;
+    margin-top: 0px;
+}
+table {
+
+    width: 100%;
+}

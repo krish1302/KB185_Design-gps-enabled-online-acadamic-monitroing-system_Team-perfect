@@ -1,0 +1,324 @@
+<mat-tab-group>
+    <mat-tab label="School Reivew">
+        <select class="custom-select" (change)="setdistricts($event)">
+            <option selected value="">select district</option>
+            <option *ngFor="let district of districtsList| async">{{district.key}}</option>
+        </select>
+        <select class="custom-select" (change)="setarea($event)">
+            <option selected value="">select area</option>
+            <option *ngFor="let area of subdistrictList| async">{{area.key}}</option>
+        </select>
+        <select class="custom-select" (change)="setschool($event)">
+            <option selected value="">select school</option>
+            <option *ngFor="let school of schoolList|async">{{school.key}}</option>
+        </select>
+        <h1><button class="btn btn-success" style="margin: 10px;" (click)="search()"><i class="fas fa-search"></i>search</button></h1>
+        <div>
+            <mat-expansion-panel >
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                   {{school}}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <label>1.How would you rate about our staff teaching?</label>
+                <h6 style="color: red;">{{key1}}</h6>
+                <label>2.How is our students reponse for your questions?</label>
+                <h6 style="color: red;">{{key2}}</h6>
+                <label>3.what did you rate about for our blackboard usage?</label>
+                <h6 style="color: red;">{{key3}}</h6>
+                <label>4.How is our curriculam?</label>
+                <h6 style="color: red;">{{key4}}</h6>
+                <label>5.How our students are get interested in extracurricular activities?</label>
+                <h6 style="color: red;">{{key5}}</h6>
+                <label>6.whether our students are unique of wearing school dress?</label>
+                <h6 style="color: red;">{{key6}}</h6>
+                <label>7.As there any essentials not included in schools(e.g.., textbooks,uniforms,etc..,)?</label>
+                <h6 style="color: red;">{{key7}}</h6>
+                <label>8.What other credentialsand qualities do our teachers have(e.g..,teaching experience,dedication,passion etc..,)?</label>
+                <h6 style="color: red;">{{key8}}</h6>
+                <label>9.What kind of technological skills,to include in our school?</label>
+                <h6 style="color: red;">{{key9}}</h6>
+                <label>10.Whether we want to offer any tech-based courses,and if so,which ones?</label>
+                <h6 style="color: red;">{{key10}}</h6>
+                <label>11.How do educators communicate with students?</label>
+                <h6 style="color: red;">{{key11}}</h6>
+                <label>12.How do students communicate with educators?</label>
+                <h6 style="color: red;">{{key12}}</h6>
+                <label>13.What is the “feel” of our school?</label>
+                <h6 style="color: red;">{{key13}}</h6>
+                <label>14.How do rate for our library facility?</label>
+                <h6 style="color: red;">{{key14}}</h6>
+                <label>15. How do rate for our sports field facility?</label>
+                <h6 style="color: red;">{{key15}}</h6>
+                <label>16.How do rate for our music room facility?</label>
+                <h6 style="color: red;">{{key16}}</h6>
+                <label>17. How do rate for our art studio facility?</label>
+                <h6 style="color: red;">{{key17}}</h6>
+                <label>18.Whether our students and teachers are punctual in class?</label>
+                <h6 style="color: red;">{{key18}}</h6>
+                <label>19.How do rate our students discipline?</label>
+                <h6 style="color: red;">{{key19}}</h6>
+                <label>20.Whether seating charts are good in class? </label>
+                <h6 style="color: red;">{{key20}}</h6>
+                <label>21.How is our class schedules ?</label>
+                <h6 style="color: red;">{{key21}}</h6>
+                <label>22.Is correctly maintaining student records?  </label>
+                <h6 style="color: red;">{{key22}}</h6>
+                <label>23.What is the essential learning that schools impart to students?</label>
+                <h6 style="color: red;">{{key23}}</h6>
+                <label>24.How to we adapt our curriculum to the technologiesthat kids are already using?</label>
+                <h6 style="color: red;">{{key24}}</h6>
+                <label>25.How do we change policy to support more flexible time and place learning?</label>
+                <h6 style="color: red;">{{key25}}</h6>
+                <label>26.What are the essential practices of teachers in a system where students are learning outside of school?</label>
+                <h6 style="color: red;">{{key26}}</h6>
+                <label>27.How is our student achievements in school activites?</label>
+                <h6 style="color: red;">{{key27}}</h6>
+                <label>28.How is our student achievements in sports?</label>
+                <h6 style="color: red;">{{key28}}</h6>
+                <label>29.How is our student achievements in extra curricular activites?</label>
+                <h6 style="color: red;">{{key29}}</h6>
+                <label>30.Is correctly maintained our teachers records?</label>                
+                <h6 style="color: red;">{{key30}}</h6>
+                    
+            </mat-expansion-panel>
+        </div>
+    </mat-tab>
+    <mat-tab label="New Form">
+         <select class="custom-select" (change)="setdistricts($event)">
+            <option selected value="">select district</option>
+            <option *ngFor="let district of districtsList| async">{{district.key}}</option>
+        </select>
+        <select class="custom-select" (change)="setarea($event)">
+            <option selected value="">select area</option>
+            <option *ngFor="let area of subdistrictList| async">{{area.key}}</option>
+        </select>
+        <select class="custom-select" (change)="setschool($event)">
+            <option selected value="">select school</option>
+            <option *ngFor="let school of schoolList|async">{{school.key}}</option>
+        </select>
+        <form [formGroup]="dashForm">
+            <label>1.How would you rate about our staff teaching?</label>
+            <select class="custom-select" formControlName="1">
+                <option selected value="">select your ratings</option>
+                <option>bad</option>
+                <option>fair</option>
+                <option>good</option>
+                <option>very good</option>
+                <option>excellent</option>
+            </select>
+            <label>2.How is our students reponse for your questions?</label>
+            <select class="custom-select" formControlName="2">
+                 <option selected value="">select your ratings</option>
+                <option>bad</option>
+                <option>fair</option>
+                <option>good</option>
+                <option>very good</option>
+                <option>excellent</option>
+            </select>
+            <label>3.what did you rate about for our blackboard usage?</label>
+            <select class="custom-select" formControlName="3">
+                <option selected value="">select your ratings</option>
+                <option>bad</option>
+                <option>fair</option>
+                <option>good</option>
+                <option>very good</option>
+                <option>excellent</option>
+            </select>
+            <label>4.How is our curriculam?</label>
+            <textarea class="form-control" formControlName="4"></textarea>
+            <label>5.How our students are get interested in extracurricular activities?</label>
+            <select class="custom-select" formControlName="5">
+                <option selected value="">select your ratings</option>
+                <option>bad</option>
+                <option>fair</option>
+                <option>good</option>
+                <option>very good</option>
+                <option>excellent</option>
+            </select>
+            <label>6.whether our students are unique of wearing school dress?</label>
+            <select class="custom-select" formControlName="6">
+                <option selected value="">select your option</option>
+                <option>yes</option>
+                <option>no</option>
+            </select>    
+            <label>7.As there any essentials not included in schools(e.g.., textbooks,uniforms,etc..,)?</label>
+            <textarea class="form-control" formControlName="7"></textarea>
+            <label>8.What other credentialsand qualities do our teachers have(e.g..,teaching experience,dedication,passion etc..,)?</label>
+            <textarea class="form-control" formControlName="8"></textarea>
+            <label>9.What kind of technological skills,to include in our school?</label>
+            <textarea class="form-control" formControlName="9"></textarea>
+            <label>10.Whether we want to offer any tech-based courses,and if so,which ones?</label>
+            <textarea class="form-control" formControlName="10"></textarea>
+            <label>11.How do educators communicate with students?</label>
+            <select class="custom-select" formControlName="11">
+                <option selected value="">select your ratings</option>
+                <option>bad</option>
+                <option>fair</option>
+                <option>good</option>
+                <option>very good</option>
+                <option>excellent</option>
+            </select>
+            <label>12.How do students communicate with educators?</label>
+            <select class="custom-select" formControlName="12">
+                <option selected value="">select your ratings</option>
+                <option>bad</option>
+                <option>fair</option>
+                <option>good</option>
+                <option>very good</option>
+                <option>excellent</option>
+            </select>
+            <label>13.What is the “feel” of our school?</label>
+            <select class="custom-select" formControlName="13">
+                <option selected value="">select your option</option>
+                <option>WELCOMING PLACE</option>
+                <option>clean</option>
+                <option>well it</option>
+                <option>secure</option>
+            </select>
+            <label>14.How do rate for our library facility?</label>
+            <select class="custom-select" formControlName="14">
+                <option selected value="">select your option</option>
+                <option>good</option>
+                <option>fair</option>
+            </select> 
+            <label>15. How do rate for our sports field facility?</label>
+            <select class="custom-select" formControlName="15">
+                <option selected value="">select your option</option>
+                <option>good</option>
+                <option>fair</option>
+            </select> 
+            <label>16.How do rate for our music room facility?</label>
+            <select class="custom-select" formControlName="16">
+                <option selected value="">select your option</option>
+                <option>good</option>
+                <option>fair</option>
+            </select>
+            <label>17. How do rate for our art studio facility?</label>
+            <select class="custom-select" formControlName="17">
+                <option selected value="">select your option</option>
+                <option>good</option>
+                <option>fair</option>
+            </select>
+            <label>18.Whether our students and teachers are punctual in class?</label>
+            <select class="custom-select" formControlName="18">
+                <option selected value="">select your option</option>
+                <option>yes</option>
+                <option>no</option>
+            </select> 
+            <label>19.How do rate our students discipline?</label>
+            <select class="custom-select" formControlName="19">
+                <option selected value="">select your ratings</option>
+                <option>bad</option>
+                <option>fair</option>
+                <option>good</option>
+                <option>very good</option>
+                <option>excellent</option>
+            </select>
+            <label>20.Whether seating charts are good in class? </label>
+            <select class="custom-select" formControlName="20">
+                <option selected value="">select your option</option>
+                <option>yes</option>
+                <option>no</option>
+            </select> 
+            <label>21.How is our class schedules ?</label>
+            <select class="custom-select" formControlName="21">
+                <option selected value="">select your ratings</option>
+                <option>bad</option>
+                <option>fair</option>
+                <option>good</option>
+                <option>very good</option>
+                <option>excellent</option>
+            </select>
+            <label>22.Is correctly maintaining student records?  </label>
+            <select class="custom-select" formControlName="22">
+                <option selected value="">select your option</option>
+                <option>yes</option>
+                <option>no</option>
+            </select>
+            <label>23.What is the essential learning that schools impart to students?</label>
+            <textarea class="form-control" formControlName="23"></textarea>
+            <label>24.How to we adapt our curriculum to the technologiesthat kids are already using?</label>
+            <textarea class="form-control" formControlName="24"></textarea>
+            <label>25.How do we change policy to support more flexible time and place learning?</label>
+            <textarea class="form-control" formControlName="25"></textarea>
+            <label>26.What are the essential practices of teachers in a system where students are learning outside of school?</label>
+            <textarea class="form-control" formControlName="26"></textarea>
+            <label>27.How is our student achievements in school activites?</label>
+            <select class="custom-select" formControlName="27">
+                <option selected value="">select your ratings</option>
+                <option>bad</option>
+                <option>fair</option>
+                <option>good</option>
+                <option>very good</option>
+                <option>excellent</option>
+            </select>
+            <label>28.How is our student achievements in sports?</label>
+            <select class="custom-select" formControlName="28">
+                <option selected value="">select your ratings</option>
+                <option>bad</option>
+                <option>fair</option>
+                <option>good</option>
+                <option>very good</option>
+                <option>excellent</option>
+            </select>
+            <label>29.How is our student achievements in extra curricular activites?</label>
+            <select class="custom-select" formControlName="29">
+                <option selected value="">select your ratings</option>
+                <option>bad</option>
+                <option>fair</option>
+                <option>good</option>
+                <option>very good</option>
+                <option>excellent</option>
+            </select>
+            <label>30.Is correctly maintained our teachers records?</label>
+            <select class="custom-select" formControlName="30">
+                <option selected value="">select your option</option>
+                <option>yes</option>
+                <option>no</option>
+            </select>
+            </form>
+        <h1 style="text-align:center;">    <button class="btn btn-outline-primary" (click)="submit()">submit</button></h1>
+            
+    </mat-tab>
+    <mat-tab label="Visitors Report">
+        
+        <form [formGroup]="reportForm">
+            <label>Name of Visitors</label>
+            <input type="text" placeholder="enter your name" class="form-control" formControlName="name">
+            <label>Administration Position</label>
+            <input type="text" placeholder="enter your job position" class="form-control" formControlName="role">
+            <label>Date of visit</label>
+            <input type="date" placeholder="enter date of visit" class="form-control" formControlName="date">
+            <label>Time of visit</label>
+            <input type="time" placeholder="enter time of visit" class="form-control" formControlName="time">
+            <mat-divider></mat-divider>
+            <select class="custom-select" (change)="setdistricts($event)">
+                <option selected value="">select district</option>
+                <option *ngFor="let district of districtsList| async">{{district.key}}</option>
+            </select>
+            <select class="custom-select" (change)="setarea($event)">
+                <option selected value="">select area</option>
+                <option *ngFor="let area of subdistrictList| async">{{area.key}}</option>
+            </select>
+            <select class="custom-select" (change)="setschool($event)">
+                <option selected value="">select school</option>
+                <option *ngFor="let school of schoolList|async">{{school.key}}</option>
+            </select>
+            <label>Remarks of the visitor</label>
+            <input type="text" placeholder="enter your remarks" class="form-control" formControlName="review">
+            <button class="btn btn-info" (click)="submitreview()">Add Remarks</button>
+            <button class="btn btn-info" (click)="removereview()">Remove Remarks</button>
+            <div *ngFor='let report of reportList|async'>
+                <label>{{report.key}}</label>
+            </div>
+            <mat-divider></mat-divider>
+            
+
+        </form>
+        
+            
+
+    </mat-tab>
+</mat-tab-group>
+
