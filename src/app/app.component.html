@@ -1,0 +1,408 @@
+<div  style="width:100%;height:150px;" id="imgdiv"><img id="img1" src="assets/images/appic.png" width="50%" height="100%"><img id="img2" src="assets/images/apl.jpg" width="50%" height="100%"></div>
+
+<div  id="mySidenav" class="sidenav">
+        <a  class="closebtn" (click)="closeNav()"> &times;</a>
+        <div style="width:100%;background:rgba(29, 82, 230, 0.979);">
+                <h5 style="text-align:center;"><i class="fas fa-user-circle" style="font-size:100px;color:white;"></i></h5>
+                <h5 style="color:white;text-align:center;">welcome</h5>
+                <h5 style="color:white;text-align:center;">{{loginuser}}</h5>
+        </div>
+        <div class="flex dropright" style="width:100%;">
+                <a  
+                        matTooltip="Home"
+                        matTooltipPosition="right" 
+                        [routerLink]="['/home']"
+                        (click)="closeNav()">
+                       <i class="fas fa-home"></i>HOME
+                </a>
+                <a class="dropdown-toggle dropdown-toggle-split"  [matMenuTriggerFor]="homeMenu" style="float:right;">
+                <span class="sr-only">Toggle Dropright</span>
+                </a>
+        </div>
+        <mat-menu #homeMenu="matMenu" xPosition="after">
+        <b mat-menu-item style="background: chocolate; top: 0px;">Add document to home display</b>
+        <mat-divider></mat-divider>
+        <button mat-menu-item data-toggle="modal" data-target="#exampleModal3" active (click)="changetab('news')">News</button>
+        <button mat-menu-item data-toggle="modal" data-target="#exampleModal3" (click)="changetab('event')">Events</button>
+        <button mat-menu-item data-toggle="modal" data-target="#exampleModal3"(click)="changetab('achieve')">Student Achievement</button>
+        <button mat-menu-item data-toggle="modal" data-target="#exampleModal3"(click)="changetab('photo')">Photo</button>
+        </mat-menu>
+        <mat-divider></mat-divider>
+        <div class="flex dropright " >
+                <a
+                        matTooltip="School"
+                        matTooltipPosition="right"
+                        [routerLink]="['/dashboard']" 
+                        (click)="closeNav()">
+                      <i class="fab fa-ioxhost"></i>DASHBOARD
+                </a>
+                <a  class="dropdown-toggle dropdown-toggle-split" [matMenuTriggerFor]="dashMenu">
+                <span class="sr-only">Toggle Dropright</span>
+                </a>
+        </div>   
+        <mat-menu #dashMenu="matMenu" xPosition="after">
+                <b mat-menu-item style="background: chocolate; top: 0px;">Menu item for Dashboard</b>
+                <mat-divider></mat-divider>      
+        </mat-menu>
+        <mat-divider></mat-divider>
+        <div class="flex dropright " >
+                <a 
+                        matTooltip="Documentation"
+                        matTooltipPosition="right"
+                        [routerLink]="['/document']" >
+                        <i class="fas fa-file-alt"></i>DOCUMENTATION 
+                </a>
+                <a class="dropdown-toggle dropdown-toggle-split" [matMenuTriggerFor]="DocMenu">
+                <span class="sr-only">Toggle Dropright</span>
+                </a>
+        </div>
+        <mat-menu #DocMenu="matMenu" xPosition="after">
+        <b mat-menu-item style="background: chocolate; top: 0px;">Add document to Document display</b>
+        <mat-divider></mat-divider>
+        <button mat-menu-item data-toggle="modal" data-target="#exampleModal4">Add Document</button>
+        </mat-menu>    
+        <mat-divider></mat-divider>
+        <div class="flex dropright ">
+                <a 
+                        matTooltip="Scheme"
+                        matTooltipPosition="right" 
+                        [routerLink]="['/scheme']"
+                        (click)="closeNav()">
+                        <i class="fas fa-money-check-alt"></i>SCHEME
+                </a>
+                <a  class="dropdown-toggle dropdown-toggle-split" [matMenuTriggerFor]="SchemeMenu">
+                <span class="sr-only">Toggle Dropright</span>
+                </a>
+        </div>   
+        <mat-menu #SchemeMenu="matMenu" xPosition="after">
+                <b mat-menu-item style="background: chocolate; top: 0px;">Add document to Scheme display</b>
+                <mat-divider></mat-divider>
+                <button mat-menu-item data-toggle="modal" data-target="#schemeModal">Add Document</button>    
+        </mat-menu>      
+        <mat-divider></mat-divider>
+        <div class="flex dropright " >
+                <a      matTooltip="School"
+                        matTooltipPosition="right"
+                        data-toggle="modal"
+                        data-target="#schoolModal">
+                        <i class="fas fa-school"></i>SCHOOL
+                </a>
+                <a  class="dropdown-toggle dropdown-toggle-split"  data-toggle="modal" data-target="#schoolModal">
+                <span class="sr-only">Toggle Dropright</span>
+                </a>
+        </div>   
+        <mat-menu #SchoolMenu="matMenu" xPosition="after">
+                <b mat-menu-item style="background: chocolate; top: 0px;">search school</b>
+                   <mat-divider></mat-divider>      
+                   <form [formGroup]="routerForm">
+                        <select  class="custom-select" formControlName="dis">
+                                <option selected value="">select district</option>
+                                <option *ngFor="let dis of districts |async">{{dis.key}}</option>
+                        </select>
+                        <select  class="custom-select" formControlName="area">
+                                <option selected value="">select area</option>
+                                <option *ngFor="let area of subdistricts | async">{{area.key}}</option>
+                        </select>
+                        <select  class="custom-select" formControlName="school">
+                                <option selected value="">select school</option>
+                                <option *ngFor="let school of schoollists |async">{{school.key}}</option>
+                        </select>
+                </form>
+                <button class="btn-outline-success" (click)="closeNav()" (click)="navi()"><i class="fas fa-search"></i>search</button>        
+        </mat-menu>
+        <mat-divider></mat-divider>
+        <div class="flex dropright " >
+                <a      matTooltip="Monitor user"
+                        matTooltipPosition="right"
+                        [routerLink]="['/userstate']">
+                        <i class="fas fa-user"></i>SCHOOL
+                </a>
+                <a  class="dropdown-toggle dropdown-toggle-split" [routerLink]="['/userstate']" >
+                <span class="sr-only">Toggle Dropright</span>
+                </a>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="flex dropright ">
+                <a 
+                        matTooltip="Galarey"
+                        matTooltipPosition="right" 
+                        [routerLink]="['/galarey']"
+                        (click)="closeNav()">
+                        <i class="fas fa-camera"></i>Galarey
+                </a>
+                <a  class="dropdown-toggle dropdown-toggle-split" [matMenuTriggerFor]="galareyMenu">
+                <span class="sr-only">Toggle Dropright</span>
+                </a>
+        </div>   
+        <mat-menu #galareyMenu="matMenu" xPosition="after">
+                <b mat-menu-item style="background: chocolate; top: 0px;">Add document to Scheme display</b>
+                <mat-divider></mat-divider>
+                <button mat-menu-item (click)="video=false" data-toggle="modal" data-target="#galareymodal">Add photo</button>
+                <button mat-menu-item (click)="video=true" data-toggle="modal" data-target="#galareymodal">Add Video</button>
+        </mat-menu>
+        <mat-divider></mat-divider>
+        <a class="btn-danger"  (click)="logout()" (click)="closeNav()"><i class="fa fa-power-off mx-2" aria-hidden="true"></i>LOGOUT</a>
+</div>
+
+
+                <div  class="topnav" id="myTopnav">
+                        <a *ngIf="!showbutton" class="active" (click)="openNav()">&#9776;Menu</a>
+                        <a *ngIf="showbutton" [routerLink]="['/home']"  (click)="myFunction()"><i class='fas fa-home mx-2'></i>HOME</a>
+                        <a *ngIf="showbutton" [routerLink]="['/document']"  (click)="myFunction()"><i class="fas fa-file-alt mx-2"></i>DOCUMENTATION</a>
+                        <a *ngIf="showbutton" [routerLink]="['/scheme']"  (click)="myFunction()"><i class="fas fa-money-check-alt mx-2"></i>SCHEME</a>
+                        <a *ngIf="showbutton" [routerLink]="['/schoolmap']"  (click)="myFunction()"><i class="fas fa-school mx-2"></i>SCHOOL</a>
+                        <a *ngIf="showbutton" [routerLink]="['/galarey']"  (click)="myFunction()"><i class="fas fa-camera mx-2"></i>GALAREY</a>
+                        <a *ngIf="showbutton" [routerLink]="['/signUp']"  (click)="myFunction()"><i class="far fa-user-circle mx-2"></i>SIGNUP</a>
+                        <a *ngIf="showbutton" data-toggle="modal" data-target="#exampleModal2"  (click)="myFunction() "><i class="fas fa-sign-in-alt mx-2"></i>LOGIN</a> 
+                        <a class="icon" *ngIf="showbutton" (click)="myFunction()">&#9776;</a>
+                </div>
+        <div style="background:rgba(73, 97, 192, 0.274)">
+                <router-outlet ></router-outlet>;
+        </div>
+        <mat-divider style="width:100%;height:3px;"></mat-divider>
+        <div style="background:url('assets/images/foot.jpg');width:100%; height:200px;display:flex;padding-bottom: 0%;background-size: cover;">
+          <div style="width: 50%;margin-top: 20px;">
+             <h4 (click)="downloadapp()">Android app</h4>
+             <h4>help<i class="fas fa-angle-right"></i></h4>
+             <h4>feedback<i class="fas fa-angle-right"></i></h4>
+             <h4>compliant<i class="fas fa-angle-right"></i></h4>
+          </div>
+          <div style="width: 50%;margin-top: 20px;">
+                <h4>contacts:<i class="fas fa-angle-right"></i></h4>
+                <h4>email:<i class="fas fa-angle-right"></i></h4>
+                <h4>phone:<i class="fas fa-angle-right"></i></h4>
+                <h4>website:<i class="fas fa-angle-right"></i></h4>
+                
+          </div>
+        </div>
+         
+       
+
+<!-- data model for login-->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+        <div class="modal-dialog" >
+                <div class="modal-content">
+                        <div class="modal-header">
+                        <h1 class="modal-title" style="display:flex;justify-content: center;align-self: center;">
+                            LOGIN
+                        </h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                               <!--  <form [formGroup]="loginForm">
+                                        <b class="col-form-label" style="color: rgb(10, 21, 88);">Type of User</b>
+                                        <select class="custom-select" required formControlName="user" style="background: none;border-radius: 20px;">
+                                            <option selected value="">Select user type</option>
+                                            <option *ngFor="let user of users">{{user}}</option>
+                                        </select>
+                                        <small *ngIf="userValidation" class="text-danger">user type is required</small><br>
+                                        <b class="col-form-label" style="color: rgb(10, 21, 88);">Email</b>
+                                        <input type="email" class="form-control" formControlName="email" required style="background: none;border-radius: 20px;">
+                                        <small *ngIf="emailValidation" class="text-danger">email is required</small><br>
+                                        <b class="col-form-label" style="color: rgb(10, 21, 88);" >Password</b>
+                                        <div class="make">
+                                        <input  [type]="hide ? 'password' : 'text'" class="form-control" formControlName="password" required style="background: none;border-radius: 20px;">
+                                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                        </button>
+                                        </div>
+                                        <small *ngIf="passwordValidation" class="text-danger">password is required</small><br>
+                                        <div class="parent">
+                                        <button type="button" data-dismiss="modal" class="btn btn-dark btn-lg" style="width:100%;border-radius: 2opx;" (click)="signIn(loginForm.get('user').value,loginForm.get('email').value,loginForm.get('password').value)">LOGOUT</button>
+                                        </div>
+                                        </form> -->
+                                        
+                                        <form [formGroup]="loginForm">
+                                               
+                                                <div class="input-container">
+                                                  <i class="fa fa-user icon"></i>
+                                                  <select class="input-field" formControlName="user">
+                                                   <option selected value="">select your user type</option>
+                                                   <option *ngFor="let user of userList|async">{{user.key}}</option>
+                                                   </select>     
+                                                </div>
+                                              
+                                                <div class="input-container">
+                                                  <i class="fa fa-envelope icon"></i>
+                                                  <input class="input-field" type="text" placeholder="Email" formControlName="email">
+                                                </div>
+                                              
+                                                <div class="input-container">
+                                                  <i class="fa fa-key icon"></i>
+                                                  <input class="input-field" [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="password">
+                                                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                                    </button>
+                                                </div>
+                                              
+                                                <button type="submit" data-dismiss="modal" class="btn" (click)="signIn(loginForm.get('user').value,loginForm.get('email').value,loginForm.get('password').value)">Login</button>
+                                        </form>
+
+                                
+                        
+                        </div>
+
+                        <div class="modal-footer">
+                                <b style="font-size: medium;"  data-dismiss="modal">forget password?</b>
+                                <b style="font-size: medium; float: right;"  data-dismiss="modal" [routerLink]="['/signUp']">create New account!</b>
+                        </div>
+                </div>
+        </div>
+</div>
+ 
+<!--model for home document upload-->
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+                <div class="modal-header">
+              <h1 class="modal-title" *ngIf="hides" id="exampleModalLabel">Upload Document</h1>
+              <h1 class="modal-title" *ngIf="!hides" id="exampleModalLabel">Upload Photo</h1>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="submitForm">
+                <label *ngIf="hides">Title</label>
+                <label *ngIf="!hides">Label heading</label>
+                <input type="text" class="form-control" formControlName="title">
+                <label *ngIf="hides">Date</label>
+                <label *ngIf="!hides">Label content</label>
+                <input [type]="hides? 'date' : 'text'" class="form-control" formControlName="date">
+                <label *ngIf="hides">Posted by</label>
+                <input *ngIf="hides" type="text" placeholder="name who post this one" class="form-control" formControlName="post">
+                <label *ngIf="hides">Document</label>
+                <label *ngIf="!hides">Photo</label>
+                <input type="file" class="form-control" (change)="uploadFile($event)" formControlName="photo">
+                <progress max="100" [value]="uploadPercent | async"></progress>
+               </form>
+            </div>
+            <div class="modal-footer">
+                <button *ngIf="hides" class="btn btn-outline-success" data-dismiss="modal" [disabled]="downloadURL==null" (click)="submit1(submitForm.get('title').value,submitForm.get('date').value,downloadURL,submitForm.get('post').value)">submit</button>      
+              <button *ngIf="!hides" class="btn btn-outline-success" data-dismiss="modal" [disabled]="downloadURL==null" (click)="submit(submitForm.get('title').value,submitForm.get('date').value,downloadURL)">submit</button> 
+            </div>
+          </div>
+        </div>
+</div>
+<!--------------------------galarey modal------------------------------>
+<div class="modal fade" id="galareymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+        <div class="modal-header">
+              <h1 class="modal-title" *ngIf="video" id="galareymodal">Upload video</h1>
+              <h1 class="modal-title" *ngIf="!video" id="exampleModalLabel">Upload Photo</h1>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+        </div>
+            <div class="modal-body">
+                        <label>heading</label>
+                        <input type="text" class="form-control" #inputhead>
+                        <label *ngIf="video">select photo</label> 
+                        <label *ngIf="!video">select photo</label> 
+                        <input type="file" class="form-control" (change)="uploadFile($event)">
+                        <progress max="100" [value]="uploadPercent | async"></progress>
+            </div>
+            <div class="modal-footer">
+                <button *ngIf="video" class="btn btn-outline-success" data-dismiss="modal"  (click)="uploadvideo(inputhead.value)" [disabled]="downloadURL==null">submit</button>      
+                <button *ngIf="!video" class="btn btn-outline-success" data-dismiss="modal" (click)="uploadphoto(inputhead.value)" [disabled]="downloadURL==null">submit</button> 
+            </div>
+          </div>
+        </div>
+</div>
+
+      
+<div class="modal fade" id="schemeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title" id="exampleModalLabel">Upload Document</h1>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="submitForm">
+                <label>Title</label>
+                <input type="text" class="form-control" formControlName="title">
+                <label>Date</label>
+                <input type="date" class="form-control" formControlName="date">
+                <label>Document</label>
+                <input type="file" class="form-control" (change)="uploadFile($event)" formControlName="photo">
+                <progress max="100" [value]="(uploadPercent | async)"></progress>
+               </form>
+            </div>
+            <div class="modal-footer">
+              <button [disabled]="downloadURL==null" class="btn btn-outline-success" (click)="submitscheme(submitForm.get('title').value,submitForm.get('date').value,downloadURL)" [disabled]="downloadURL==null">submit</button> 
+            </div>
+          </div>
+        </div>
+</div>
+<!--model for Doc document upload-->
+<div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title" id="exampleModalLabel">Upload Document</h1>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="submitForm">
+                <label>Title</label>
+                <input type="text" class="form-control" formControlName="title">
+                <label>Date</label>
+                <input type="date" class="form-control" formControlName="date">
+                <label>Document</label>
+                <input type="file" class="form-control" (change)="uploadFile($event)" formControlName="photo">
+                <progress max="100" [value]="(uploadPercent | async)"></progress>
+               </form>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-outline-success" (click)="submitdoc(submitForm.get('title').value,submitForm.get('date').value,downloadURL)" [disabled]="downloadURL==null">submit</button> 
+            </div>
+          </div>
+        </div>
+</div>
+
+
+<!---------------school modal-->
+<div class="modal fade" id="schoolModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title" id="exampleModalLabel">Search school</h1>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="routerForm">
+                        <select  class="custom-select" formControlName="dis" (change)=" locate($event)">
+                                <option selected value="">select district</option>
+                                <option *ngFor="let dis of districts |async">{{dis.key}}</option>
+                        </select>
+                        <select  class="custom-select" formControlName="area" (change)="dosomething($event)">
+                                <option selected value="">select area</option>
+                                <option *ngFor="let area of subdistricts | async">{{area.key}}</option>
+                        </select>
+                        <select  class="custom-select" formControlName="school">
+                                <option selected value="">select school</option>
+                                <option *ngFor="let school of schoollists |async">{{school.key}}</option>
+                        </select>
+                </form>
+                
+            </div>
+            <div class="modal-footer">
+                <button class="btn-outline-success" data-dismiss="modal" (click)="navi()"><i class="fas fa-search"></i>search</button> 
+                <button class="btn-outline-success" data-dismiss="modal" (click)="gotomap()"><i class="fas fa-map-marker-alt"></i>locate</button>
+            </div>
+          </div>
+        </div>
+</div>
+

@@ -1,0 +1,32 @@
+.label{
+    width:100%;
+    height:50px;
+    background:brown;
+    text-align: center;
+}
+.text{
+    font-size: x-large;
+    margin-top: 5px;
+    font-weight: bolder;
+    display: inline-flex;
+}
+.flex{
+    width:100%;
+    height: fit-content;
+    display:flex;
+}
+.text1{
+    width: 33.3%;
+    border: solid brown 1px;
+}
+.text2{
+    width: 33.3%;
+    text-align:center;
+    font-size: large;
+    border: solid brown 1px;
+    background: white;
+}
+.float{
+    float: right;
+    margin: 5px;
+}

@@ -1,0 +1,60 @@
+.mattab{
+    width:75% ;
+}
+.matcard{
+    width: 90%;
+    height: 480px;
+    margin-left: 5%;
+    background: none;
+    border: solid 3px black;
+}
+.mar{
+    height: 90%;
+}
+.flex{
+    display:flex;
+}
+.align{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.bottom{
+    margin-top: 20px;
+}
+.stick{
+    width:25%;
+    height:550px;
+}
+.card{
+   height:480px;
+   background: none;
+   border-radius: 10px;
+   border: 2px solid goldenrod;
+}
+.photo{
+    height: 200px;
+    width:90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+@media screen and (max-width: 900px){
+    .flex{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .stick{
+        width: 100%;
+    }
+    .mattab{
+        width: 100%;
+    }
+    .matcard{
+        margin-top: 10px;
+    }
+    .card{
+        margin-top:10px;
+    }
+}

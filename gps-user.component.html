@@ -1,0 +1,58 @@
+<mat-tab-group>
+    <mat-tab label="LoggedInUser">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">S.no</th>
+              <th scope="col">Type of user</th>
+              <th scope="col">Email</th>
+              <th scope="col">latitude</th>
+              <th scope="col">longitude</th>
+              <th scope="col">Login Time</th>
+              <th scope="col">Locate</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let login of loginList|async;index as i">
+              <th scope="row">{{i+1}}</th>
+              <td>{{login.user}}</td>
+              <td>{{login.email}}</td>
+              <td>{{login.lat}}</td>
+              <td>{{login.lng}}</td>
+              <td>{{login.time}}</td>
+              <td><button class="btn btn-primary" (click)="location(login.lat,login.lng)">location</button></td>
+            </tr>
+            </tbody>
+          </table>
+
+    </mat-tab>
+    <mat-tab label="Previous LoggedInUser">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">S.no</th>
+              <th scope="col">Type of user</th>
+              <th scope="col">Email</th>
+              <th scope="col">latitude</th>
+              <th scope="col">longitude</th>
+              <th scope="col">Login Time</th>
+              <th scope="col">Logout Time</th>
+              <th scope="col">Locate</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let logout of logoutList|async;index as i">
+              <th scope="row">{{i+1}}</th>
+              <td>{{logout.user}}</td>
+              <td>{{logout.email}}</td>
+              <td>{{logout.lat}}</td>
+              <td>{{logout.lng}}</td>
+              <td>{{logout.intime}}</td>
+              <td>{{logout.outtime}}</td>
+              <td><button class="btn btn-primary" (click)="location(logout.lat,logout.lng)">location</button></td>
+            </tr>
+            </tbody>
+          </table>
+
+    </mat-tab>
+</mat-tab-group>

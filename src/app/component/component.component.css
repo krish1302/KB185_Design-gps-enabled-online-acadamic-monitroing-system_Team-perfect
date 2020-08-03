@@ -1,0 +1,161 @@
+.flex{
+    display: flex;
+}
+.grid{
+    display: grid;
+    grid-row: 1;
+    grid-column: 2;
+    width: 100%;
+    height: 100%;
+}
+ul{
+  list-style: none;
+}
+.tabdiv{
+  width:78%;
+  margin-left:2%;
+}
+.sidetab{
+   width: 20%;
+   margin-top: 2%; 
+}
+.mattab{
+  width:75% ;
+}
+.matcard{
+  width: 90%;
+  height: 480px;
+  margin-left: 5%;
+  background: none;
+  border: solid 3px black;
+}
+.mar{
+  height: 90%;
+}
+.flex1{
+  display:flex;
+}
+.align{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.bottom{
+  margin-top: 20px;
+}
+.stick{
+  width:25%;
+  height:550px;
+}
+.card{
+ height:480px;
+ background: none;
+ border-radius: 10px;
+ border: 2px solid goldenrod;
+}
+.photo{
+  height: 200px;
+  width:90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.caro{
+  width:50%;
+  height:470px;
+}
+
+@media screen and (max-width: 900px){
+  .flex1{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+  }
+  .stick{
+      width: 100%;
+  }
+  .mattab{
+      width: 100%;
+  }
+  .matcard{
+      margin-top: 10px;
+  }
+  .card{
+      margin-top:10px;
+  }
+  .sidetab{
+    width: 100%;
+  }
+  .marq{
+    width:100%;
+  }
+  .caro{
+    width:100%;
+  }
+}
+
+
+
+@media screen and (max-width:1300px){
+  .flex{
+    display: flex;
+    flex-direction: column;
+  }
+  mat-tab-group{
+    width:100%;
+  }
+  .tabdiv{
+    width:100%;
+  }
+  .sidetab{
+    width: 100%;
+  }
+  
+}
+
+
+
+
+.input-container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* Style the form icons */
+.icon {
+  padding: 10px;
+  background: dodgerblue;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+}
+
+/* Style the input fields */
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
+
+.input-field:focus {
+  border: 2px solid dodgerblue;
+}
+
+/* Set a style for the submit button */
+.btn1 {
+  background-color: dodgerblue;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.btn1:hover {
+  opacity: 1;
+}
+
+.example-margin {
+  margin: 0 10px;
+}

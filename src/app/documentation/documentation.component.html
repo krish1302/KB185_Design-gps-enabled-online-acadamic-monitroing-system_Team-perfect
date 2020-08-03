@@ -1,0 +1,25 @@
+<div style="margin:0;widows: 100%;height:100%;">
+<div class="label">
+    <label class="text">DOCUMENTS</label>
+</div>  
+<div class="flex">
+    <label class="text2">Title</label>
+    <label class="text2">Date</label>
+    <label class="text2">Download</label>
+</div> 
+<div class="flex" *ngFor="let doc of doclist |async">
+  <div class="list-group-item text2"><h4>{{doc.title}}</h4></div>
+  <div class="list-group-item text2"><h4>{{doc.date}}</h4></div>
+  <div class="list-group-item text2">
+    
+      <span class="material-icons text1" style="color:black" (click)="download(doc.downurl)">
+      move_to_inbox
+      </span>
+    
+  </div>
+</div>
+</div>
+
+
+ 
+

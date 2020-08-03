@@ -1,0 +1,58 @@
+<div class="flex">
+<div class="mattab">  
+<mat-tab-group mat-align-tabs="start" style="width:100%;">
+  <mat-tab label="NEWS">
+    <mat-card class="matcard">
+      <marquee direction="up" class="mar" scrollamount="2" onmouseover="stop()" onmouseout="start()">
+      <div *ngFor="let news of newslist | async">  
+        <mat-card class="my-2">
+          <mat-card-title (click)="download(news.downurl)">{{news.title}}</mat-card-title>
+          <mat-card-subtitle>dated on: {{news.date}}  <span class="mx-5">posted by:{{news.post}}</span></mat-card-subtitle>
+        </mat-card>
+      </div>
+      </marquee>
+    </mat-card>
+  </mat-tab>
+  <mat-tab label="EVENTS">
+    <mat-card class="matcard">
+      <marquee direction="up" class="mar" scrollamount="2" onmouseover="stop()" onmouseout="start()">
+       <div *ngFor="let news of eventlist | async">  
+        <mat-card class="my-2">
+          <mat-card-title (click)="download(news.downurl)">{{news.title}}</mat-card-title>
+          <mat-card-subtitle>dated on: {{news.date}} <span class="mx-5">posted by:{{news.post}}</span></mat-card-subtitle>
+        </mat-card>
+      </div>
+      </marquee>
+  </mat-card>
+  </mat-tab>
+  <mat-tab label="ACHIVEMENTS">
+    <mat-card class="matcard my-2">
+      <marquee direction="up" class="mar" scrollamount="2" onmouseover="stop()" onmouseout="start()">
+       <div *ngFor="let news of achievelist | async">  
+        <mat-card>
+          <mat-card-title (click)="download(news.downurl)">{{news.title}}</mat-card-title>
+          <mat-card-subtitle>dated on: {{news.date}} <span class="mx-5">posted by:{{news.post}}</span></mat-card-subtitle>
+        </mat-card>
+      </div>
+      </marquee>
+    </mat-card>
+  </mat-tab>
+</mat-tab-group>  
+</div>
+<div class="stick">
+  <h1 style="text-align:center;">ADMINISTRATION</h1>
+  <ngb-carousel #carousel [interval]="5000" [pauseOnHover]="pauseOnHover" (slide)="onSlide($event)"  style="width:100%;height:470px">
+    <ng-template ngbSlide *ngFor="let photo of photolist | async; index as i" ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img [src]="photo.downurl" width="100%" height="470px">
+        </div>
+        <div class="carousel-caption">
+          <h3 style="color:black;">{{photo.title}}</h3>
+          <p style="color:black;">{{photo.date}}</p>
+        </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
+</div>
+
+

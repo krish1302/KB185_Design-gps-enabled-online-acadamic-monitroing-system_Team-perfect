@@ -1,0 +1,51 @@
+.map{
+    width: 75%;
+}
+.map  :hover{
+   fill: white;
+   transition: ease-in-out 0.5s;
+}
+h1{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+.flex{
+    display:inline-flex;
+    width: 100%;
+    flex-direction: row;
+}
+.place{
+    width: 25%;
+    height: 100%;
+}
+.box{
+    right: 0;
+    left: 0;
+    top: 0;
+    color: white;
+    display:none;
+}
+
+
+@media screen and (max-width: 750px) {
+  .flex{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+  } 
+  .place a{
+      display:none;
+  } 
+  .dist a{
+    display: none;
+  } 
+  .map{
+      width: 100%;
+  }
+  .box{
+      display:block;
+      height:100px;
+  }
+}
+

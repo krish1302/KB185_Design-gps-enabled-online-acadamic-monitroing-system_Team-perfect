@@ -1,0 +1,1498 @@
+<label style="text-align:center;width:100%;">{{school}}</label>
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-3" style="width: 100%;">
+   
+   <!-- Step 3: Toggle the value of the property when the toggler button is clicked. -->
+    <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+      &#9776;
+    </button>
+  
+    <!-- Step 2: Add the ngbCollapse directive to the element below. -->
+    <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav" id="myTap" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a *ngIf="tabshow" class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" placement="bottom" ngbTooltip="Home" (click)="isMenuCollapsed = !isMenuCollapsed"><i class="fas fa-home"></i>HOME</a>
+                <a *ngIf="!tabshow" class="nav-link active dropdown-toggle" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" [matMenuTriggerFor]="HomeMenu" ><i class="fas fa-home"></i>HOME</a>
+                <mat-menu class="dropdown" #HomeMenu="matMenu">
+                     <a class="dropdown-item" data-toggle="modal" data-target="#homeModal" (click)="changetab('news')">add news</a>
+                     <a class="dropdown-item" data-toggle="modal" data-target="#homeModal" (click)="changetab('events')">add events</a>
+                     <a class="dropdown-item" data-toggle="modal" data-target="#homeModal" (click)="changetab('achieve')">add achieve</a>
+                    <a class="dropdown-item" data-toggle="modal" data-target="#homeModal" (click)="changetab('photo')">add photo</a>
+                </mat-menu>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a *ngIf="tabshow" class="nav-link" id="teacher-tab" data-toggle="tab" href="#teacher" role="tab" aria-controls="teacher" aria-selected="false" (click)="isMenuCollapsed = !isMenuCollapsed"><i class="fas fa-chalkboard-teacher"></i>TEACHER</a>
+                <a *ngIf="!tabshow" class="nav-link dropdown-toggle" id="teacher-tab" data-toggle="tab" href="#teacher" role="tab" aria-controls="teacher" aria-selected="false" [matMenuTriggerFor]="teacherMenu"><i class="fas fa-chalkboard-teacher"></i>TEACHER</a>
+                <mat-menu #teacherMenu="matMenu"> 
+                    <a class="dropdown-item" data-toggle="modal" data-target="#teacherprofiles" (click)="isMenuCollapsed = !isMenuCollapsed">Add profile</a>
+                </mat-menu>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a *ngIf="headmaster" class="nav-link" id="teacher-attendance" data-toggle="tab" href="#teacherat" role="tab" aria-controls="teacherat" aria-selected="false" (click)="isMenuCollapsed = !isMenuCollapsed">teacher attendance</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a *ngIf="!tabshow" class="nav-link" id="admission-tab" data-toggle="tab" href="#admission" role="tab" aria-controls="admission" aria-selected="false" (click)="isMenuCollapsed = !isMenuCollapsed"><i class="fas fa-user-friends"></i>ADMISSION</a>              
+            </li>
+            <li class="nav-item" role="presentation">
+                <a *ngIf="!tabshow" class="nav-link" id="ad-form-tab" data-toggle="tab" href="#ad-form" role="tab" aria-controls="ad-form" aria-selected="false" (click)="isMenuCollapsed = !isMenuCollapsed"><i class="fas fa-user-plus"></i>NEW ADMISSION</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a *ngIf="!tabshow" class="nav-link" id="class-tab" data-toggle="tab" href="#class" role="tab" aria-controls="class" aria-selected="false" (click)="isMenuCollapsed = !isMenuCollapsed"><i class="far fa-users"></i>CLASSES</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a *ngIf="!tabshow" class="nav-link" id="attendance-tab" data-toggle="tab" href="#attendance" role="tab" aria-controls="attendance" aria-selected="false" (click)="isMenuCollapsed = !isMenuCollapsed"><i class="fas fa-calendar-check"></i>ATTENDANCE</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a *ngIf="!tabshow" class="nav-link" id="exam-tab" data-toggle="tab" href="#exam" role="tab" aria-controls="exam" aria-selected="false" (click)="isMenuCollapsed = !isMenuCollapsed"><i class="far fa-file-alt"></i>EXAM</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a *ngIf="!tabshow" class="nav-link" id="result-tab" data-toggle="tab" href="#result" role="tab" aria-controls="result" aria-selected="false" (click)="isMenuCollapsed = !isMenuCollapsed"><i class="fab fa-researchgate"></i>RESULT</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a *ngIf="tabshow" class="nav-link" id="sports-tab" data-toggle="tab" href="#sports" role="tab" aria-controls="sports" aria-selected="false" (click)="isMenuCollapsed = !isMenuCollapsed"><i class="fas fa-football-ball"></i>SPORTS</a>
+                <a *ngIf="!tabshow" class="nav-link dropdown-toggle" id="sports-tab" data-toggle="tab" href="#sports" role="tab" aria-controls="sports" aria-selected="false" [matMenuTriggerFor]="sportsMenu" ><i class="	fas fa-football-ball"></i>SPORTS</a>
+                <mat-menu #sportsMenu="matMenu">
+                    <a class="dropdown-item" data-toggle="modal" data-target="#sportsModal" (click)="sportsEvent=true" >Add Event</a>
+                    <a class="dropdown-item" data-toggle="modal" data-target="#sportsModal" (click)="sportsEvent=false">Add Photo</a>
+                </mat-menu>
+            </li>
+            <li class="nav-item" role="presentation" >
+                <a *ngIf="tabshow" class="nav-link" id="galarey-tab" data-toggle="tab" href="#galarey" role="tab" aria-controls="galarey" aria-selected="false" (click)="isMenuCollapsed = !isMenuCollapsed"><i class="fas fa-camera-retro"></i>GALAREY</a>
+                <a *ngIf="!tabshow" class="nav-link dropdown-toggle" id="galarey-tab" data-toggle="tab" href="#galarey" role="tab" aria-controls="galarey" aria-selected="false" [matMenuTriggerFor]="galareyMenu" ><i class="fas fa-camera-retro"></i>GALAREY</a>
+                <mat-menu #galareyMenu="matMenu">
+                    <a class="dropdown-item" data-toggle="modal" data-target="#galareyModal" (click)="gEvent=true">Add Video</a>
+                    <a class="dropdown-item" data-toggle="modal" data-target="#galareyModal" (click)="gEvent=false">Add Photo</a>
+                </mat-menu>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a *ngIf="!tabshow" class="nav-link" id="lecture-tab" data-toggle="tab" href="#lecture" role="tab" aria-controls="lecture" aria-selected="false" (click)="isMenuCollapsed = !isMenuCollapsed"><i class="far fa-file-video"></i>LECTURE</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a *ngIf="studentlogin" class="nav-link" id="student-attendance-tab" data-toggle="tab" href="#student-attendance" role="tab" aria-controls="student-attendance" aria-selected="false" (click)="isMenuCollapsed = !isMenuCollapsed"><i class="fas fa-calendar-check"></i>attendance</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a *ngIf="studentlogin" class="nav-link" id="student-exam-tab" data-toggle="tab" href="#student-exam" role="tab" aria-controls="student-exam" aria-selected="false" (click)="isMenuCollapsed = !isMenuCollapsed"><i class="far fa-file-alt"></i>examination</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a *ngIf="studentlogin" class="nav-link" id="student-result-tab" data-toggle="tab" href="#student-result" role="tab" aria-controls="student-result" aria-selected="false" (click)="isMenuCollapsed = !isMenuCollapsed"><i class="fab fa-researchgate"></i>result</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a *ngIf="studentlogin" class="nav-link" id="student-lecture-tab" data-toggle="tab" href="#student-lecture" role="tab" aria-controls="student-lecture" aria-selected="false" (click)="isMenuCollapsed = !isMenuCollapsed"><i class="far fa-file-video"></i>lecture</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a *ngIf="tabshow" class="nav-link dropdown-toggle" id="account-tab" data-toggle="tab" href="#account" role="tab" aria-controls="account" aria-selected="false" [matMenuTriggerFor]="accountMenu">ACCOUNT</a>
+                <a *ngIf="!tabshow" class="nav-link dropdown-toggle" id="account-tab" data-toggle="tab" href="#account" role="tab" aria-controls="account" aria-selected="false" (click)="setlogout()">ACCOUNT</a>
+                <button *ngIf="!tabshow" class="btn btn-outline-danger" (click)="logout()" style="margin-left: 5%;" id="account-tab" data-toggle="tab" href="#account" role="tab" aria-controls="account" aria-selected="false">Logout</button>
+                <mat-menu #accountMenu="matMenu">
+                    <a class="dropdown-item" (click)="setlogin()">Login</a>
+                    <a class="dropdown-item" (click)="setsignup()">SignUp</a>
+                </mat-menu>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="dash-tab" data-toggle="tab" href="#dash" role="tab" aria-controls="dash" aria-selected="false" (click)="getPercentage('Teacher')"><i class="fas fa-flying-paper-plane"></i>Dashboard</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="compliant-tab" data-toggle="tab" href="#complaint" role="tab" aria-controls="complaint" aria-selected="false"><i class="fas fa-flying-paper-plane"></i>Feedback</a>
+            </li>
+        </ul>
+    </div>
+  </nav>
+
+
+
+
+
+<!-- Nav tabs -->
+<div class="tab-content" style="width:100%;">
+     <!---home tab---------------------------------------------------------------->
+    <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+       
+        <div class="flex1">
+            <div class="mattab">  
+            <mat-tab-group mat-align-tabs="start" style="width:100%;">
+              <mat-tab label="NEWS">
+                <mat-card class="matcard">
+                  <marquee direction="up" class="mar" scrollamount="2" onmouseover="stop()" onmouseout="start()">
+                  <div *ngFor="let news of newslist | async">  
+                    <mat-card class="my-2">
+                      <mat-card-title (click)="download(news.downurl)">{{news.title}}</mat-card-title>
+                      <mat-card-subtitle>dated on: {{news.date}}  <span class="mx-5">posted by:{{news.post}}</span></mat-card-subtitle>
+                    </mat-card>
+                  </div>
+                  </marquee>
+                </mat-card>
+              </mat-tab>
+              <mat-tab label="EVENTS">
+                <mat-card class="matcard">
+                  <marquee direction="up" class="mar" scrollamount="2" onmouseover="stop()" onmouseout="start()">
+                   <div *ngFor="let news of eventlist | async">  
+                    <mat-card class="my-2">
+                      <mat-card-title (click)="download(news.downurl)">{{news.title}}</mat-card-title>
+                      <mat-card-subtitle>dated on: {{news.date}} <span class="mx-5">posted by:{{news.post}}</span></mat-card-subtitle>
+                    </mat-card>
+                  </div>
+                  </marquee>
+              </mat-card>
+              </mat-tab>
+              <mat-tab label="STUDENT ACHIVEMENTS">
+                <mat-card class="matcard my-2">
+                  <marquee direction="up" class="mar" scrollamount="2" onmouseover="stop()" onmouseout="start()">
+                   <div *ngFor="let news of achievelist | async">  
+                    <mat-card>
+                      <mat-card-title (click)="download(news.downurl)">{{news.title}}</mat-card-title>
+                      <mat-card-subtitle>dated on: {{news.date}} <span class="mx-5">posted by:{{news.post}}</span></mat-card-subtitle>
+                    </mat-card>
+                  </div>
+                  </marquee>
+                </mat-card>
+              </mat-tab>
+            </mat-tab-group>  
+            </div>
+            <div class="stick">
+              <h1 style="text-align:center;">ADMINISTRATION</h1>
+              <ngb-carousel #carousel [interval]="5000" [pauseOnHover]="pauseOnHover" (slide)="onSlide($event)"  style="width:100%;height:470px">
+                <ng-template ngbSlide *ngFor="let photo of photolist | async; index as i" ngbSlide>
+                    <div class="picsum-img-wrapper">
+                      <img [src]="photo.downurl" width="100%" height="470px">
+                    </div>
+                    <div class="carousel-caption">
+                      <h3>{{photo.title}}</h3>
+                      <p>{{photo.date}}</p>
+                    </div>
+                </ng-template>
+              </ngb-carousel>
+            </div>
+            </div>
+            
+            
+    </div>
+    <!----teacher tab------------------------------------------------------------>
+    <div class="tab-pane" id="teacher" role="tabpanel" aria-labelledby="teacher-tab">
+        <div  *ngFor="let teacher of teacherprofiles | async"> 
+        <div class="flex" style="margin-top: 10px;">
+            <img [src]="teacher.url" width="15%" height="15%">
+            <div>
+                <label>Role : <span>{{teacher.role}}</span></label><br>
+                <label>Name : <span>{{teacher.name}}</span></label><br>
+                <label>Qualification : <span>{{teacher.deg}}</span></label><br>
+            </div>
+        </div>
+        <mat-divider width="100%"></mat-divider>
+        </div>
+    </div>
+
+   <!---------------teacher attendance---------------------------->
+<div class="tab-pane" id="teacherat" role="tabpanel" aria-labelledby="teacher-attendance">
+   
+        <div class="tabdiv">
+            <input class="form-control" type="date" style="margin-top: 2%;" [(ngModel)]="date" (change)="showteachAttendance()">
+            <mat-tab-group>
+                <mat-tab label="Put Attendance">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                          <th scope="col">S.no</th>
+                          <th scope="col">Role</th>
+                          <th scope="col">Teacher Name</th>
+                          <th scope="col">Attendance</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let teacher of teacherprofiles | async; index as i">
+                          <th scope="row">{{ i + 1 }}</th>
+                          <td>{{teacher.role}}</td>
+                          <td>{{ teacher.name }}</td>
+                          <td>
+                            <select class="custom-select" (change)="putteachAttendance(teacher.role,teacher.name,$event)">
+                                <option selected value="">-------------</option>
+                                <option>Present</option>
+                                <option>leave</option>
+                            </select>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+    
+                </mat-tab>
+                <mat-tab label="Show Attendance">
+                    <table  id="showat" class="table table-striped">
+                        <thead>
+                        <tr>
+                          <th scope="col">S.no</th>
+                          <th scope="col">Role</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Attendance</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let student of showteacheratList | async; index as i">
+                          <th scope="row">{{ i + 1 }}</th>
+                          <td>{{student.role}}</td>
+                          <td>{{ student.name }}</td>
+                          <td>{{student.at}}</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                     <!--  <button (click)="Export()">pdf</button> -->
+                </mat-tab>    
+            </mat-tab-group>
+
+                           
+             
+        </div>
+</div> 
+    <!-----Admission tab--------------------------------------------------------------------------->
+    <div class="tab-pane" id="admission" role="tabpanel" aria-labelledby="admission-tab">
+        <select class="custom-select" style="width: 30%;" (change)="showAdmissionList($event)" style="margin-top: 5px;">
+            <option selected value="">-------------- Select year -------</option>
+            <option *ngFor="let year of yearlist | async">{{year.key}}</option>
+        </select> 
+             <hr width="100%">
+        <div *ngFor="let student of admissionList |async">
+            <div class="flex">
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header style="height: 200px;">
+                         
+                         <mat-card-title>{{student.reg}}</mat-card-title>
+                         <label>Name : <span>{{student.name}}</span></label><br>
+                         <label>Dob : <span>{{student.dob}}</span></label><br>
+                    </mat-expansion-panel-header>
+                    <img [src]="student.url" style="width: 100px;height: 100px;">
+                            <label>Father's Name:<span>{{student.fa_name}}</span></label><br>
+                            <label>Father's occupation:<span>{{student.fa_work}}</span></label><br>
+                            <label>Mother's Name:<span>{{student.ma_name}}</span></label><br>
+                            <label>Mother's occupation:<span>{{student.ma_work}}</span></label><br>
+                            <label>Gender:<span>{{student.gender}}</span></label><br>
+                            <label>Community:<span>{{student.comm}}</span></label><br>
+                            <label>Caste:<span>{{student.caste}}</span></label><br>
+                            <label>First Graduate:<span>{{student.first}}</span></label><br>
+                            <label>email:<span>{{student.email}}</span></label><br>
+                            <label>Phone No:<span>{{student.phone}}</span></label><br>
+                            <label>Address:<span>{{student.add}}</span></label><br>
+
+                           
+                </mat-expansion-panel>
+            </div>
+                <hr width="100%">
+        </div>
+    </div>    
+    
+    <div class="tab-pane" id="ad-form" role="tabpanel" aria-labelledby="ad-form-tab">
+            <form  [formGroup]="admissForm">
+                <h1>Admission Form</h1>
+                <img [src]="downloadURL" style="height: 200px; width: 200px;">
+                <input type="file" class="form-control" placeholder="add photo" (change)="getdownloadurl($event)">
+                <label class="col-form-control">Student name</label>
+                <input type="text" placeholder="ex. BALAKRISHNAN P" class="form-control" formControlName="name">
+                <label>admission year</label>
+                <input type="text" placeholder="ex. 2020-2021" class="form-control" formControlName="year">
+                <label class="col-form-control">Date of Birth</label>
+                <input type="date" class="form-control" formControlName="dob">
+                <label class="col-form-control">Register No</label>
+                <input type="number" placeholder="ex. 123456789" class="form-control" formControlName="reg">
+                <label class="col-form-control">Father's name</label>
+                <input type="text"  class="form-control" formControlName="fa_name">
+                <label class="col-form-control">Father's Occupation</label>
+                <input type="text"  class="form-control" formControlName="fa_work">
+                <label class="col-form-control">Mother's name</label>
+                <input type="text"  class="form-control" formControlName="ma_name">
+                <label class="col-form-control">Mother's Occupation</label>
+                <input type="text"  class="form-control" formControlName="ma_work">
+                <label class="col-form-control">Gender</label>
+                <select class="custom-select" formControlName="gender">
+                    <option selected value="">----</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+                <label class="col-form-control">First Graduate</label>
+                <select class="custom-select" formControlName="first">
+                    <option selected value="">----</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+                <label class="col-form-control">Community</label>
+                <select class="custom-select" formControlName="comm">
+                    <option selected >--------------</option>
+                    <option></option>
+                </select>
+                <label class="col-form-control">Caste</label>
+                <select class="custom-select" formControlName="caste">
+                    <option selected >--------------</option>
+                    <option></option>
+                </select>
+                <label class="col-form-control">Email id</label>
+                <input type="email"  class="form-control" placeholder="ex. abcd@gmail.com" formControlName="email">
+                <label class="col-form-control">Phone No</label>
+                <input type="number"  class="form-control" placeholder="ex. 9876543210" formControlName="phone">
+                <label class="col-form-control">Address</label>
+                <input type="text" placeholder="address" class="form-control" formControlName="add">
+                <button class="btn btn-outline-info" style="border-radius: 100px; margin-top: 25px; margin-left: 40%;" (click)="addAdmission(admissForm.get('name').value
+                ,admissForm.get('dob').value,admissForm.get('reg').value,admissForm.get('fa_name').value,admissForm.get('fa_work').value,admissForm.get('ma_name').value,admissForm.get('ma_work').value,admissForm.get('add').value,admissForm.get('gender').value,admissForm.get('first').value,admissForm.get('comm').value,admissForm.get('caste').value,admissForm.get('email').value,admissForm.get('phone').value,admissForm.get('year').value)">submit</button>
+            </form>
+    </div>
+    <!----CLASSES TAB----------------------------------------------------------------->
+    <div class="tab-pane" id="class" role="tabpanel" aria-labelledby="class-tab">
+        <select class="custom-select" style="margin-top: 1%;" (change)="setyear($event)">
+            <option selected value="" >select current year</option>
+            <option *ngFor="let year of yearlist | async">{{year.key}}</option>
+        </select>
+        <mat-divider width="100% " style="margin-top: 10px;"></mat-divider>
+        <div class="flex" style="width: 100%;">
+                <div class="sidetab" style="width: 20%; margin-top: 2%; height:100%">
+                    <div class="btn-group dropright" style="width: 100%;">
+                        <button class="btn btn-secondary">Standard</button>
+                        <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split"  data-toggle="modal" data-target="#classes" (click)="csclass()">
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+    
+                    </div>
+                    <div *ngFor="let class of classList | async">
+                        <div class="btn-group dropright" style="width: 100%;">
+                        <button class="btn btn-outline-secondary" style="width: 85%;" [matMenuTriggerFor]="section" (click)="selectsection(class.key)">{{class.key}}</button> 
+                        <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" style="width: 15%;" data-toggle="modal" data-target="#classes" (click)="cssection()">
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <mat-menu #section="matMenu">
+                            <div *ngFor="let section of sectionList | async">  
+                            <button mat-menu-item (click)="showStudentList(section.key)">{{section.key}}</button>
+                            </div>
+                        </mat-menu>
+                        </div>
+                    </div>
+                </div>
+                <hr style="width: 2px; background: black; height:auto;margin-left: 5px;">
+            <div id="tabdiv" style="width: 78%; margin-left:2%;">
+               <button class="btn btn-secondary btn-sm" style="margin:5px; margin-top: 2%;" [disabled]="cscheck()" data-target="#addstudent" data-toggle="modal">add student</button>
+                <div *ngFor="let student of studentShowList |async">
+                    <div class="flex" style="margin-left: 10px;">
+                        <img [src]="student.url" style="width: 100px;height: 100px;">
+                        <div style="margin-left: 10px;">
+                            <mat-card-title>{{student.reg}}</mat-card-title>
+                            <label>Name : <span>{{student.name}}</span></label><br>
+                            <label>Dob : <span>{{student.dob}}</span></label><br>
+                        </div>
+                    </div>
+                    <hr width="100%"> 
+                </div>
+            </div>    
+        </div>
+    </div>
+<!----------------ATTENDANCE TAB------------------------------------------------------------->
+    <div class="tab-pane" id="attendance" role="tabpanel" aria-labelledby="attendance-tab">
+        <select class="custom-select" style="margin-top: 1%;" (change)="setyear1($event)">
+            <option selected value="" >select current year</option>
+            <option *ngFor="let year of yearlist | async">{{year.key}}</option>
+        </select>
+        <mat-divider width="100% " style="margin-top: 10px;"></mat-divider>
+        <div class="flex" style="width: 100%;">
+                <div class="sidetab" style="width: 20%; margin-top: 2%; height:100%">
+                    <div class="btn-group dropright" style="width: 100%;">
+                        <button class="btn btn-secondary">Standard</button>
+                    </div>
+                    <div *ngFor="let class of classList1 | async">
+                        <div class="btn-group dropright" style="width: 100%;">
+                            <button class="btn btn-outline-secondary" style="width: 85%;" [matMenuTriggerFor]="section" (click)="selectsection1(class.key)">{{class.key}}</button> 
+                            <mat-menu #section="matMenu">
+                                <div *ngFor="let section of sectionList1 | async">  
+                                <button mat-menu-item (click)="showStudentList1(section.key)">{{section.key}}</button>
+                                </div>
+                            </mat-menu>
+                        </div>
+                    </div>
+                </div>
+                <hr style="width: 2px; background: black; height:auto;margin-left: 5px;">
+            <div class="tabdiv">
+                <input class="form-control" type="date" style="margin-top: 2%;" [(ngModel)]="date" (change)="showAttendance()">
+                <mat-tab-group>
+                    <mat-tab label="Put Attendance">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                              <th scope="col">S.no</th>
+                              <th scope="col">Name</th>
+                              <th scope="col">Register No</th>
+                              <th scope="col">Attendance</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let student of studentShowList1 | async; index as i">
+                              <th scope="row">{{ i + 1 }}</th>
+                              <td>{{ student.name }}</td>
+                              <td>{{ student.reg }}</td>
+                              <td>
+                                <select class="custom-select" (change)="putAttendance(student.name,student.reg,$event)">
+                                    <option selected value="">-------------</option>
+                                    <option>Present</option>
+                                    <option>absent</option>
+                                    <option>leave</option>
+                                </select>
+                              </td>
+                            </tr>
+                            </tbody>
+                          </table>
+        
+                    </mat-tab>
+                    <mat-tab label="Show Attendance">
+                        <table  id="showat" class="table table-striped">
+                            <thead>
+                            <tr>
+                              <th scope="col">S.no</th>
+                              <th scope="col">Name</th>
+                              <th scope="col">Register No</th>
+                              <th scope="col">Attendance</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let student of studentShowList2 | async; index as i">
+                              <th scope="row">{{ i + 1 }}</th>
+                              <td>{{ student.name }}</td>
+                              <td>{{ student.reg }}</td>
+                              <td>{{student.at}}</td>
+                            </tr>
+                            </tbody>
+                          </table>
+                         <!--  <button (click)="Export()">pdf</button> -->
+                    </mat-tab>    
+                </mat-tab-group>
+    
+                               
+                 
+            </div>
+        </div>
+    </div>
+<!------------------EXAM TAB---------------------------------------------------------------------->
+    <div class="tab-pane" id="exam" role="tabpanel" aria-labelledby="exam-tab">
+        <select class="custom-select" style="margin-top: 1%;" (change)="setyear2($event)">
+            <option selected value="" >select current year</option>
+            <option *ngFor="let year of yearlist | async">{{year.key}}</option>
+        </select>
+        <mat-divider width="100% " style="margin-top: 10px;"></mat-divider>
+        <div class="flex" style="width: 100%;">
+                <div class="sidetab" style="width: 20%; margin-top: 2%; height:100%">
+                    <div class="btn-group dropright" style="width: 100%;">
+                        <button class="btn btn-secondary">Standard</button>
+                    </div>
+                    <div *ngFor="let class of classList2 | async">
+                        <div class="btn-group dropright" style="width: 100%;">
+                            <button class="btn btn-outline-secondary" style="width: 85%;" (click)="setstand2(class.key)">{{class.key}}</button> 
+                        </div>
+                    </div>
+                </div>
+                <hr style="width: 2px; background: black; height:auto;margin-left: 5px;">
+                <div class="tabdiv">
+                    <mat-tab-group>
+                        <mat-tab label="Post Exam Time Table">
+                            <input class="form-control" type="text" placeholder="ex. examination name" style="width:90%;" [(ngModel)]="exam">
+                            <table  class="table table-striped">
+                                <thead>
+                                <tr>
+                                  <th scope="col">S.no</th>
+                                  <th scope="col">subject No</th>
+                                  <th scope="col">Date</th>
+                                </tr>
+                                </thead>    
+                            </table>    
+                            <div *ngFor="let number of numbers;index as i;">
+                                <form [formGroup]="examForm" class="form-group row">
+                                    <div formArrayName="sno" style="width: 33.3%;">
+                                        <input type="number" class="form-control"  placeholder="s.no" [formControlName]="i">
+                                    </div>
+                                    <div  formArrayName="name"  style="width: 33.3%;">
+                                       <input class="form-control" type="text" placeholder="subject name"  [formControlName]="i">
+                                    </div>
+                                    <div  formArrayName="date"  style="width: 33.3%;">
+                                       <input class="form-control" type="date"  [formControlName]="i">
+                                    </div>
+                                </form>
+                            </div>
+                                
+                                
+                            <button class="btn btn-sm btn-secondary" (click)="addnumber(1)">add more</button>
+                            <button class="btn btn-sm btn-secondary" (click)="submitexam()">submit</button>
+                        </mat-tab>
+                        <mat-tab label="Show Time Table" >
+                            <select class="custom-select" (change)="showExaminationList($event)">
+                                <option selected value="">select exam</option>
+                                <option *ngFor="let exam of examList | async" >{{exam.key}}</option>
+                            </select>
+                            <table  class="table table-striped">
+                                <thead>
+                                <tr>
+                                  <th scope="col">S.no</th>
+                                  <th scope="col">subject No</th>
+                                  <th scope="col">Date</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let exam of examShowList |async; index as i">
+                                    <th scope="row">{{i+1}}</th>
+                                    <td>{{exam.sub}}</td>
+                                    <td>{{exam.date}}</td>
+                                </tr>
+                                </tbody>
+                              </table>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div> 
+            </div>   
+    </div>                
+<!-----------------------------RESULT TAB----------------------------------------------------------------->
+    <div class="tab-pane" id="result" role="tabpanel" aria-labelledby="result-tab">
+        <select class="custom-select" style="margin-top: 1%;" (change)="setyear3($event)">
+            <option selected value="" >select current year</option>
+            <option *ngFor="let year of yearlist | async">{{year.key}}</option>
+        </select>
+        <mat-divider width="100% " style="margin-top: 10px;"></mat-divider>
+        <div class="flex" style="width: 100%;">
+            <div class="sidetab">
+                    <div class="btn-group dropright" style="width: 100%;">
+                        <button class="btn btn-secondary" >Standard</button>
+                    </div>
+                    <div *ngFor="let class of classList3 | async">
+                        <button class="btn btn-outline-secondary" style="width: 100%;" [matMenuTriggerFor]="section" (click)="selectsection3(class.key)">{{class.key}}</button> 
+                        <mat-menu #section="matMenu">
+                            <div *ngFor="let section of sectionList3 | async">  
+                            <button mat-menu-item (click)="getstudentList(section.key)">{{section.key}}</button>
+                            </div>
+                        </mat-menu>
+                    </div>
+            </div>
+                <hr style="width: 2px; background: black; height:auto;margin-left: 5px;">
+            <div class="tabdiv">
+                <select class="custom-select" (change)="getsubjectList($event)">
+                    <option selected value="">select exam</option>
+                    <option *ngFor="let exam of ExamList |async">{{exam.key}}</option>
+                </select>
+                <select class="custom-select" (change)="setsubject($event)">
+                    <option selected value="">select subject</option>
+                    <option *ngFor="let exam of ExamSubList| async">{{exam.sub}}</option> 
+                </select>
+                <mat-tab-group>
+                    <mat-tab label="Post Result">
+                        <table  class="table table-striped">
+                            <thead>
+                            <tr>
+                              <th scope="col">S.no</th>
+                               <th scope="col">Register No</th>
+                              <th scope="col">Subject Name</th>
+                              <th>Marks</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let student of ResultsStudentList | async; index as i">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{student.reg}}</td>
+                                <td>{{student.name}}</td>
+                                <td><input type="number" class="form-control" (change)="addmarkstodatabase(student.reg,student.name,$event)"></td>
+                            </tr>
+                            </tbody>
+                          </table>
+                    </mat-tab>
+                    <mat-tab label="Show Result">
+                        <table  class="table table-striped">
+                            <thead>
+                            <tr>
+                              <th scope="col">S.no</th>
+                              <th scope="col">Register No</th>
+                              <th scope="col">Subject Name</th>
+                              <th>Marks</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let result of showSubjectResult | async; index as i">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{result.reg}}</td>
+                                <td>{{result.name}}</td>
+                                <td>{{result.mark}}</td>
+                            </tr>
+                            </tbody>
+                          </table>
+                    </mat-tab>
+                </mat-tab-group>  
+            </div>
+        </div>
+    </div>
+<!------------------------------Sports tab-------------------------------------------------->
+    <div class="tab-pane" id="sports" role="tabpanel" aria-labelledby="sports-tab">
+        <div class="flex">
+            <marquee class="marq" width="40%" height="300px" direction="up" style="border:2px solid black;" onmouseover="stop()" onmouseout="start()">
+                <div *ngFor="let event of sportsList| async">
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                           {{event.head}}
+                          </mat-panel-title>
+                          <mat-panel-description>
+                           dated on:{{event.date}}
+                          </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <p>{{event.content}}</p>
+                      </mat-expansion-panel>
+                </div>
+            </marquee>
+
+            <ngb-carousel  #carousel [interval]="5000" [pauseOnHover]="pauseOnHover" (slide)="onSlide($event)"   class="caro">
+                <ng-template ngbSlide *ngFor="let photo of sportsPhotoList |async; index as i" ngbSlide>
+                    <div class="picsum-img-wrapper">
+                      <img [src]="photo" width="100%" height="470px">
+                    </div>
+                </ng-template>
+            </ngb-carousel>
+        </div>
+    </div>
+
+    <!-------galarey tab------------------------------------------------------------->
+    <div class="tab-pane" id="galarey" role="tabpanel" aria-labelledby="galarey-tab">
+        <mat-tab-group>
+            <mat-tab label="Image Galarey">
+               <div *ngFor="let photo of galareyPhotoList| async">
+                <mat-card style="width: 340px;">
+                    <img [src]="photo.url" width="100%" height="200px">
+                    <div style="height:100px;width:100%;margin-left:0;margin-right:0;margin-bottom:0;background:red;color:white;">
+                       <h5>{{photo.head}}</h5>
+                       <h5>{{photo.date}}</h5>
+                       <h5>{{photo.content}}</h5>
+                    </div>
+                 </mat-card> 
+                </div>
+            </mat-tab>
+            <mat-tab label="Video Galarey">
+                <div *ngFor="let photo of galareyPhotoList| async">
+                    <mat-card style="width: 340px;">
+                        <video width="320" height="240" controls>
+                            <source [src]="photo.url">
+                        </video>
+                        <div style="height:100px;width:100%;margin-left:0;margin-right:0;margin-bottom:0;background:red;color:white;">
+                           <h5>{{photo.head}}</h5>
+                           <h5>{{photo.date}}</h5>
+                           <h5>{{photo.content}}</h5>
+                        </div>
+                     </mat-card> 
+                    </div>
+            </mat-tab>    
+        </mat-tab-group>
+ </div>
+    
+ <!----lecture tab--------------------------------------------------------->   
+    <div class="tab-pane" id="lecture" role="tabpanel" aria-labelledby="lecture-tab">
+        <select class="custom-select" style="margin-top: 1%;" (change)="setyear4($event)">
+            <option selected value="" >select current year</option>
+            <option *ngFor="let year of yearlist | async">{{year.key}}</option>
+        </select>
+        <mat-divider width="100% " style="margin-top: 10px;"></mat-divider>
+        <div class="flex" style="width: 100%;">
+                <div class="sidetab" style="width: 20%; margin-top: 2%; height:100%">
+                    <div class="btn-group dropright" style="width: 100%;">
+                        <button class="btn btn-secondary">Standard</button>
+                    </div>
+                    <div *ngFor="let class of classList4 | async">
+                        <div class="btn-group dropright" style="width: 100%;">
+                            <button class="btn btn-outline-secondary" style="width: 85%;" (click)="setstand4(class.key)">{{class.key}}</button> 
+                        </div>
+                    </div>
+                </div>
+                <hr style="width: 2px; background: black; height:auto;margin-left: 5px;">
+                <div class="tabdiv">
+                    <button class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#lectureModal" (click)="lectureEvent=true">put Video</button>
+                    <button class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#lectureModal" (click)="lectureEvent=false">put document</button>
+                    <mat-tab-group  mat-align-tabs="start">
+                        <mat-tab label="document">
+                            <div *ngFor="let doc of lectureDocumentList | async">
+                                <mat-card (click)="downloadDocument(doc.url)" style="margin: 20px;">
+                                    <mat-card-header>
+                                        <mat-card-title>{{doc.head}}</mat-card-title>
+                                        <mat-card-subtitle>{{doc.date}}</mat-card-subtitle>
+                                    </mat-card-header>
+                                    {{doc.content}}
+                                </mat-card>
+                            </div>   
+                        </mat-tab>
+                        <mat-tab label="video">
+                            <div *ngFor="let doc of lectureVideoList | async">
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                      <mat-panel-title>
+                                       {{doc.head}}
+                                      </mat-panel-title>
+                                      <mat-panel-description>
+                                        {{doc.date}}
+                                      </mat-panel-description>
+                                    </mat-expansion-panel-header>
+                                    <video width="320" height="240" controls>
+                                        <source [src]="doc.url">
+                                    </video>
+                                    <p>{{doc.content}}</p>
+                                    <input type="text" class="form-control" placeholder="review your comment" [(ngModel)]="review">
+                                    <button class="btn btn-sm btn-secondary" (click)="addReview(doc.head,review,logoutemail)">post</button>
+                                    <mat-expansion-panel>
+                                        <mat-expansion-panel-header>
+                                            <button class="btn btn-secondary btn-sm" (click)="watchReview(doc.head)">watch review</button>
+                                            
+                                        </mat-expansion-panel-header>
+                                        <div *ngFor="let revie of reviewList |async">
+                                            <h4>{{revie.review}} : <span>{{revie.email}}</span></h4>
+                                        </div>
+                                    </mat-expansion-panel>        
+                                  </mat-expansion-panel>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+        </div>        
+    </div>
+    <!-------------------------------Account tab--------------------------------------->
+    <div class="tab-pane" id="account" role="tabpanel" aria-labelledby="account-tab">
+          <div *ngIf="loginaccount">
+            <mat-card style="width: 80%; margin-left: 10%; margin-right: 10%;">
+                <mat-card-header>
+                    <mat-card-title style="text-align: center;"> Login </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <form [formGroup]="loginForm">
+                                               
+                        <div class="input-container">
+                          <i class="fa fa-user icon"></i>
+                          <select class="input-field" formControlName="select" (change)="studentloginpage($event)">
+                           <option selected value="">select your user type</option>
+                           <option>Head Master</option>
+                           <option>Teacher</option>
+                           <option>Student</option>
+                           <option>Parent</option>
+                           </select>     
+                        </div>
+                        <label *ngIf="studentlogin">year</label>
+                       <select *ngIf="studentlogin" class="custom-select" (change)="setstudentloginyear($event)">
+                           <option selected value="">select current year</option>
+                           <option *ngFor="let year of yearlist | async">{{year.key}}</option> 
+                       </select>
+                       <label *ngIf="studentlogin">Standard</label>
+                       <select *ngIf="studentlogin" class="custom-select" (change)="setstudentstandard($event)">
+                           <option selected value="">select your standard</option>
+                           <option *ngFor="let year of studentStandardList | async">{{year.key}}</option> 
+                       </select>
+                       <label *ngIf="studentlogin">Section</label>
+                       <select *ngIf="studentlogin" class="custom-select" (change)="setstudentsection($event)">
+                           <option selected value="">select your section</option>
+                           <option *ngFor="let year of studentSectionList | async">{{year.key}}</option> 
+                       </select>
+                       <label *ngIf="studentlogin">Student register no</label>
+                       <input *ngIf="studentlogin" class="form-control" type="number" placeholder="register no" [(ngModel)]="refnumber" [ngModelOptions]="{standalone: true}">
+                      
+                        <div class="input-container" style="margin-top:1%;">
+                          <i class="fa fa-envelope icon"></i>
+                          <input class="input-field" type="text" placeholder="Email" formControlName="email">
+                        </div>
+                      
+                        <div class="input-container">
+                          <i class="fa fa-key icon"></i>
+                          <input class="input-field" [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="password">
+                          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </div>
+                        <button class="btn1 btn-outline-success"  (click)="login(loginForm.get('select').value,loginForm.get('email').value,loginForm.get('password').value)">login</button>
+                       
+                </form>
+
+                   <!-- <form [formGroup]="loginForm">
+                       <label class="col-form-label">user type</label>
+                       <select class="custom-select" formControlName="select" (change)="studentloginpage($event)">
+                           <option selected value="">Select your user type</option>
+                           <option>Head Master</option>
+                           <option>Teacher</option>
+                           <option>Student</option>
+                       </select>
+                       <label *ngIf="studentlogin">year</label>
+                       <select *ngIf="studentlogin" class="custom-select" (change)="setstudentloginyear($event)">
+                           <option selected value="">select current year</option>
+                           <option *ngFor="let year of yearlist | async">{{year.key}}</option> 
+                       </select>
+                       <label *ngIf="studentlogin">Standard</label>
+                       <select *ngIf="studentlogin" class="custom-select" (change)="setstudentstandard($event)">
+                           <option selected value="">select your standard</option>
+                           <option *ngFor="let year of studentStandardList | async">{{year.key}}</option> 
+                       </select>
+                       <label *ngIf="studentlogin">Section</label>
+                       <select *ngIf="studentlogin" class="custom-select" (change)="setstudentsection($event)">
+                           <option selected value="">select your section</option>
+                           <option *ngFor="let year of studentSectionList | async">{{year.key}}</option> 
+                       </select>
+                       <label *ngIf="studentlogin">Section</label>
+                       <input *ngIf="studentlogin" class="form-control" type="number" [(ngModel)]="refnumber" [ngModelOptions]="{standalone: true}">
+                       <label class="col-form-control">Email</label>
+                       <input type="email" class="form-control" formControlName="email">
+                       <label class="col-form-control">Password</label>
+                       <input type="password" class="form-control" formControlName="password">
+                       <button class="btn btn-outline-success" style="margin-left: 40%;" (click)="login(loginForm.get('select').value,loginForm.get('email').value,loginForm.get('password').value)">login</button>
+                   </form> -->
+                </mat-card-content>
+            </mat-card>
+          </div>
+          <div *ngIf="signupaccount">
+            <mat-card style="width: 80%; margin-left: 10%; margin-right: 10%;">
+                <mat-card-header>
+                    <mat-card-title>SIGNUP YOUR ACCOUNT</mat-card-title>
+                </mat-card-header>
+                <form [formGroup]="signupForm">
+                                               
+                    <div class="input-container">
+                      <i class="fa fa-user icon"></i>
+                      <select class="input-field" formControlName="select">
+                       <option selected value="">select your user type</option>
+                       <option>Head Master</option>
+                       <option>Teacher</option>
+                       <option>Student</option>
+                       <option>Parent</option>
+                       </select>     
+                    </div>
+                    <div class="input-container">
+                      <i class="fa fa-key icon"></i>
+                      <input class="input-field" [type]="hide ? 'password' : 'text'" placeholder="school code">
+                      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </div>
+                    <div class="input-container">
+                      <i class="fa fa-envelope icon"></i>
+                      <input class="input-field" type="text" placeholder="Email" formControlName="email">
+                    </div>
+                  
+                    <div class="input-container">
+                      <i class="fa fa-key icon"></i>
+                      <input class="input-field" [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="password">
+                      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </div>
+                    <button class="btn1 btn-outline-success" (click)="signup(signupForm.get('select').value,signupForm.get('email').value,signupForm.get('password').value)">signup</button>
+            </form>
+                <!-- <form [formGroup]="signupForm">
+                    <label class="col-form-label">type of user</label>
+                    <select class="custom-select" formControlName="select"> 
+                        <option selected value="">select your type</option>
+                        <option>Head Master</option>
+                        <option>Teacher</option>
+                        <option>Student</option>
+                    </select>
+                    <label class="col-form-control">Email id</label>
+                    <input type="email" class="form-control" formControlName="email">
+                    <label class="col-form-control">Password</label>
+                    <input type="password" class="form-control" formControlName="password">
+                </form> 
+ -->                
+            </mat-card>
+          </div>
+          <div *ngIf="logoutaccount">
+            <mat-card style="width: 90%; margin-left: 5%; margin-right: 5%;">
+                <mat-card-header>
+                    <mat-card-title>{{school}}</mat-card-title>
+                </mat-card-header>
+                <h4>wecome {{logoutemail}} !!!</h4>
+                <div *ngIf="headmaster">
+                    <label>settings of school portal</label>
+                    <input type="number" #lat placeholder="latitude of school" class="form-control">
+                    <input type="number" #lng placeholder="longitude of school" class="form-control">
+                    <input type="email" #semail placeholder="email of school" class="form-control">
+                    <input type="number" #snum placeholder="phone no of school" class="form-control">
+                    <input type="text" #sadd placeholder="address of school" class="form-control">
+                    <button class="btn btn-success" (click)="latlng(lat.value,lng.value,semail.value,snum.value,sadd.value)">AddcLocation</button>
+                </div>
+                <h4>school detalis</h4>
+                <h4>email: {{semail}}</h4>
+                <h4>contacts:+91 {{sphone}}</h4>
+                <h4>address: {{sadd}}</h4>
+            </mat-card>
+          </div>
+
+    </div>
+<!--------------------dashboard tab------------------------------------------------->
+    <div class="tab-pane" id="dash" role="tabpanel" aria-labelledby="dash-tab">
+        <!-- <input type="text" #inputpost placeholder="enter your complaints in school" class="form-control">
+        <input type="date" #inputdate class="form-control">
+        <button class="btn btn-success" (click)="post(inputpost.value,inputdate.value)"><i class="fas fa-paper-plane"></i>post</button>
+        <div *ngFor="let postcom of postList|async">
+            <h4>{{postcom}}</h4>
+        </div> -->
+        <button class="btn btn-success" (click)="getPercentage('Teacher')">Teacher</button>
+        <button class="btn btn-success" (click)="getPercentage('Student')">Student</button>
+        <button class="btn btn-success" (click)="getPercentage('Parent')">Parent</button>
+        <button class="btn btn-success" (click)="getPercentage('People')">People</button>
+        <button class="btn btn-success" (click)="getPercentage('Visitor')">Visitor</button>
+       
+        <h3>Toatal FeedbacK: {{res}}</h3>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" [style.width]="ans1*20" aria-valuenow="ans1*20" aria-valuemin="0" aria-valuemax="100">1.Infrastructure:{{ans1*20}}%</div>
+        </div>
+        <label>1.Infrastructure</label>
+                    <mat-progress-spinner
+                        class="example-margin"
+                        color="primary"
+                        mode="determinate"
+                        [value]="ans1*20">
+                    </mat-progress-spinner>
+                    <label>{{ans1*20}}%</label>
+        <mat-divider></mat-divider>            
+                <label>2.Staff's Teaching</label>
+                <mat-progress-spinner
+                class="example-margin"
+                color="primary"
+                mode="determinate"
+                [value]="ans2*20">
+            </mat-progress-spinner>
+            <label>{{ans2*20}}%</label>
+            <mat-divider></mat-divider>
+            <label>3.Library facility</label>
+                <mat-progress-spinner
+                class="example-margin"
+                color="primary"
+                mode="determinate"
+                [value]="ans3*20">
+            </mat-progress-spinner>
+            <label>{{ans3*20}}%</label>
+            <mat-divider></mat-divider>
+                <label>4.Extra curricular activity</label>
+                <mat-progress-spinner
+                class="example-margin"
+                color="primary"
+                mode="determinate"
+                [value]="ans4*20">
+            </mat-progress-spinner>
+            <label>{{ans4*20}}%</label>
+            <mat-divider></mat-divider>
+                <label>5.Student discipline</label>
+                <mat-progress-spinner
+                class="example-margin"
+                color="primary"
+                mode="determinate"
+                [value]="ans5*20">
+            </mat-progress-spinner>
+            <label>{{ans5*20}}%</label>
+            <mat-divider></mat-divider>
+                <label>6.Sports activity</label>
+                <mat-progress-spinner
+                class="example-margin"
+                color="primary"
+                mode="determinate"
+                [value]="ans6*20">
+            </mat-progress-spinner>
+            <label>{{ans6*20}}%</label>
+            <mat-divider></mat-divider>
+                <label>7.Restroom facility</label>
+                <mat-progress-spinner
+                class="example-margin"
+                color="primary"
+                mode="determinate"
+                [value]="ans7*20">
+            </mat-progress-spinner>
+            <label>{{ans7*20}}%</label>
+            <mat-divider></mat-divider>
+                <label>8.Education of student</label>
+                <mat-progress-spinner
+                class="example-margin"
+                color="primary"
+                mode="determinate"
+                [value]="ans8*20">
+            </mat-progress-spinner>
+            <label>{{ans8*20}}%</label>
+            <mat-divider></mat-divider>
+                <label>9.student records</label>
+                <mat-progress-spinner
+                class="example-margin"
+                color="primary"
+                mode="determinate"
+                [value]="ans9*20">
+            </mat-progress-spinner>
+            <label>{{ans9*20}}%</label>
+            <mat-divider></mat-divider>
+                <label>10.teachers records</label>
+                <mat-progress-spinner
+                        class="example-margin"
+                        color="primary"
+                        mode="determinate"
+                        [value]="ans10*20">
+                    </mat-progress-spinner>
+                    <label>{{ans10*20}}%</label>
+                    <mat-divider></mat-divider>
+                <label>11.class room schedule</label>
+                <mat-progress-spinner
+                        class="example-margin"
+                        color="primary"
+                        mode="determinate"
+                        [value]="ans11*20">
+                    </mat-progress-spinner>
+                    <label>{{ans11*20}}%</label>
+                    <mat-divider></mat-divider>
+                <label>12.Pass result of Student</label>  
+                <mat-progress-spinner
+                class="example-margin"
+                color="primary"
+                mode="determinate"
+                [value]="ans12*20">
+            </mat-progress-spinner>
+            <label>{{ans12*20}}%</label>
+    
+    </div>
+<!------------------feedback tab--------------------------->
+    <div class="tab-pane" id="complaint" role="tabpanel" aria-labelledby="complaint-tab">
+    <form [formGroup]="feedbackForm">
+        <select class="custom-select" formControlName="user">
+            <option selected value="">select your type</option>
+            <option>Teacher</option>
+            <option>Student</option>
+            <option>Parent</option>
+            <option>People</option>
+            <option>Visitor</option>
+        </select>
+        <h3>Rate our school</h3>
+        <label>1.Infrastructure</label>
+        <select class="form-control" formControlName="1">
+            <option selected value="">select rating</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        <label>2.Staff's Teaching</label>
+        <select class="form-control" formControlName="2">
+            <option selected value="">select rating</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select> 
+        <label>3.Library facility</label>
+        <select class="form-control" formControlName="3">
+            <option selected value="">select rating</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select> 
+        <label>4.Extra curricular activity</label>
+        <select class="form-control" formControlName="4">
+            <option selected value="">select rating</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>  
+        <label>5.Student discipline</label>
+        <select class="form-control" formControlName="5">
+            <option selected value="">select rating</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        <label>6.Sports activity</label>
+        <select class="form-control" formControlName="6">
+            <option selected value="">select rating</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        <label>7.Restroom facility</label>
+        <select class="form-control" formControlName="7">
+            <option selected value="">select rating</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        <label>8.Education of student</label>
+        <select class="form-control" formControlName="8">
+            <option selected value="">select rating</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        <label>9.student records</label>
+        <select class="form-control" formControlName="9">
+            <option selected value="">select rating</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        <label>10.teachers records</label>
+        <select class="form-control" formControlName="10">
+            <option selected value="">select rating</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        <label>11.class room schedule</label>
+        <select class="form-control" formControlName="11">
+            <option selected value="">select rating</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        <label>12.Pass result of Student</label>
+        <select class="form-control" formControlName="12">
+            <option selected value="">select rating</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </form>
+    <button class="btn btn-success" (click)="submitfeedback()">submit</button>
+    </div>
+    <!-----------------------------------student attendance----------------------------------------->
+    <div class="tab-pane" id="student-attendance" role="tabpanel" aria-labelledby="student-attendance-tab">
+        <input class="form-control" type="date" style="margin-top: 2%;" [(ngModel)]="studentdate" (change)="setstudentAttendanceList()">
+        <table  class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Register No</th>
+              <th scope="col">Attendance</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">{{studentattendname}}</th>
+                <td>{{studentattendreg}}</td>
+                <td>{{studentattendat}}</td>
+            </tr>
+            </tbody>
+          </table>
+    </div>
+ <!----------------student exam-------------------------------------------------->   
+    <div class="tab-pane" id="student-exam" role="tabpanel" aria-labelledby="student-exam-tab">
+        <select class="custom-select" (change)="getstudentexamList($event)">
+            <option selected value=""></option>
+            <option *ngFor="let exam of studentexamList |async">{{exam.key}}</option>
+        </select>
+        <table  class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">S.No</th>
+              <th scope="col">Subject Name</th>
+              <th scope="col">Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr  *ngFor="let exam of studentexamShowList |async">
+                <th scope="row">{{exam.sno}}</th>
+                <td>{{exam.sub}}</td>
+                <td>{{exam.date}}</td>
+            </tr>
+            </tbody>
+          </table>
+    </div>  
+ <!----------------------student result-------------------------------------------------------------------------->   
+    <div class="tab-pane" id="student-result" role="tabpanel" aria-labelledby="student-result-tab">
+        <select class="custom-select" (change)="getstudentexamList($event)">
+            <option selected value="">select exam</option>
+            <option *ngFor="let exam of studentexamList |async">{{exam.key}}</option>
+        </select>
+        <button class="btn btn-sm btn-secondary" (click)="showstudentResult()">Show Result</button>
+
+        <table  class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">S.No</th>
+              <th scope="col">Subject Name</th>
+              <th scope="col">Marks</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr  *ngFor="let exam of examsubject; index as i;">
+                <th scope="row">{{i+1}}</th>
+                <td>{{exam}}</td>
+                <td>{{marks[i]}}</td>
+            </tr>
+            </tbody>
+          </table>
+    </div>
+
+    <!--------------------------student lecture--------------------------------------------------->
+    <div class="tab-pane" id="student-lecture" role="tabpanel" aria-labelledby="student-lecture-tab">
+        <mat-tab-group  mat-align-tabs="start">
+            <mat-tab label="document">
+                <div *ngFor="let doc of studentlectureDocumentList | async">
+                    <mat-card (click)="downloadDocument(doc.url)" style="width: 50%;">
+                        <mat-card-header>
+                            <mat-card-title>{{doc.head}}</mat-card-title>
+                            <mat-card-subtitle>{{doc.date}}</mat-card-subtitle>
+                        </mat-card-header>
+                        {{doc.content}}
+                    </mat-card>
+                </div>   
+            </mat-tab>
+            <mat-tab label="video">
+                <div *ngFor="let doc of studentlectureVideoList | async">
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                           {{doc.head}}
+                          </mat-panel-title>
+                          <mat-panel-description>
+                            {{doc.date}}
+                          </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <video width="320" height="240" controls>
+                            <source [src]="doc.url">
+                        </video>
+                        <p>{{doc.content}}</p>
+                        <input type="text" class="form-control" placeholder="review your comment" [(ngModel)]="review">
+                        <button class="btn btn-sm btn-secondary" (click)="addReview1(doc.head,review)">post</button>
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <button class="btn btn-secondary btn-sm" (click)="watchReview1(doc.head)">watch review</button>
+                                
+                            </mat-expansion-panel-header>
+                            <div *ngFor="let revie of reviewList |async">
+                                <h5>{{revie.review}} : <span>{{revie.review}}</span></h5>
+                            </div>
+                        </mat-expansion-panel>        
+                      </mat-expansion-panel>
+                </div>
+               
+            </mat-tab>
+        </mat-tab-group>
+    </div>  
+
+</div>
+
+
+<!----teacher profile--------------------------------------------------->
+<div class="modal fade" id="teacherprofiles" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Teacher's profile</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         <form [formGroup]="teacherForm">
+             <label>Name</label>
+             <input type="text" class="form-control" formControlName="name">
+             <label>Role</label>
+             <select class="custom-select" formControlName="role">
+                 <option selected value="">select your role</option>
+                 <option>Head Master</option>
+                 <option>Teacher</option>
+             </select>
+             <label>Qualification</label>
+             <input type="text" class="form-control" formControlName="deg">
+             <label>photo</label>
+             <input type="file" class="form-control" (change)="getdownloadurl($event)">
+             
+         </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" [disabled]="downloadURL==null" data-dismiss="modal" (click)="addProfile(teacherForm.get('name').value,teacherForm.get('role').value,teacherForm.get('deg').value)">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!----classs addition--------------------------------------------------->
+<div class="modal fade" id="classes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 *ngIf="cs" class="modal-title" id="exampleModalLabel">Add class</h5>
+          <h5 *ngIf="!cs" class="modal-title" id="exampleModalLabel">Add section</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <form [formGroup]="classForm">   
+        <label *ngIf="!cs">select class</label> 
+        <select *ngIf="!cs" class="custom-select" formControlName="select">
+            <option>select your standard</option>
+            <option *ngFor="let class of classes| async">{{class.key}}</option>
+        </select>   
+        <label *ngIf="cs">enter class</label>
+        <label *ngIf="!cs">enter section</label>
+        <input type="text" class="form-control" formControlName="val">
+         </form> 
+        </div>
+        
+        <div class="modal-footer">
+          <button *ngIf="cs" type="button" class="btn btn-primary"  data-dismiss="modal" (click)="addclass(classForm.get('val').value)">Add</button>
+          <button *ngIf="!cs" type="button" class="btn btn-primary" data-dismiss="modal" (click)="addsection(classForm.get('select').value,classForm.get('val').value)">Add</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="addstudent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>Add student</h1>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="addForm">
+                <label>Admission year</label>
+                <select class="custom-select" style="margin-top: 1%;" formControlName="year">
+                    <option selected value="" >select admission year</option>
+                    <option *ngFor="let year of yearlist | async">{{year.key}}</option>
+                </select>
+                <label>Admission No</label>
+                <input type="number" placeholder="12345" class="form-control" formControlName="reg">
+                <label>Register No</label>
+                <input type="number" class="form-control" formControlName="regno">
+            </form>
+        </div>
+        <div class="modal-footer">
+             <button class="btn btn-success" data-dismiss="modal" (click)="addstudent(addForm.get('year').value,addForm.get('reg').value,addForm.get('regno').value)">add student</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-------------------sports Modal--------------------------------------------------------------->
+  <div class="modal fade" id="sportsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 *ngIf="sportsEvent">Add News</h1>
+          <h1 *ngIf="!sportsEvent">Add photos</h1>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="sportsForm">
+                <label *ngIf="sportsEvent">Head</label>
+                <input *ngIf="sportsEvent" type="text" class="form-control" formControlName="head">
+                <label *ngIf="sportsEvent">Event</label>
+                <input *ngIf="sportsEvent" type="text" class="form-control" formControlName="content">
+                <label *ngIf="sportsEvent">Date</label>
+                <input *ngIf="sportsEvent" type="date" class="form-control" formControlName="date">
+                <label *ngIf="!sportsEvent">Add photo</label>
+                <input *ngIf="!sportsEvent" type="file" class="form-control" (change)="getdownloadurl($event)">
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button *ngIf="sportsEvent" data-dismiss="modal" class="btn btn-sm btn-secondary" (click)="addSportsEvent(sportsForm.get('head').value,sportsForm.get('content').value,sportsForm.get('date').value)" >submit</button>
+            <button [disabled]="downloadURL==null" *ngIf="!sportsEvent" data-dismiss="modal" class="btn btn-sm btn-secondary" (click)="addSportsPhoto()" >submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--------------------------galarey Modal----------------------------------------------------------->
+  <div class="modal fade" id="galareyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 *ngIf="gEvent">Add Video</h1>
+          <h1 *ngIf="!gEvent">Add photo</h1>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="addGalareyForm">
+                <label >Head</label>
+                <input  type="text" class="form-control" formControlName="head">
+                <label >Event</label>
+                <input  type="text" class="form-control" formControlName="content">
+                <label>Date</label>
+                <input  type="date" class="form-control" formControlName="date">
+                <label *ngIf="gEvent">Add Video</label>
+                <label *ngIf="!gEvent">Add photo</label>
+                <input type="file" class="form-control" (change)="getdownloadurl($event)">
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button *ngIf="gEvent" data-dismiss="modal" [disabled]="downloadURL==null" class="btn btn-sm btn-secondary" (click)="addGalareyVideo(addGalareyForm.get('head').value,addGalareyForm.get('content').value,addGalareyForm.get('date').value)" >submit</button>
+            <button *ngIf="!gEvent" data-dismiss="modal" [disabled]="downloadURL==null"  class="btn btn-sm btn-secondary" (click)="addGalareyPhoto(addGalareyForm.get('head').value,addGalareyForm.get('content').value,addGalareyForm.get('date').value)" >submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="lectureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 *ngIf="lectureEvent">Add Video</h1>
+          <h1 *ngIf="!lectureEvent">Add document</h1>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="addGalareyForm">
+                <label >Head</label>
+                <input  type="text" class="form-control" formControlName="head">
+                <label >Event</label>
+                <input  type="text" class="form-control" formControlName="content">
+                <label>Date</label>
+                <input  type="date" class="form-control" formControlName="date">
+                <label *ngIf="lectureEvent">Add Video</label>
+                <label *ngIf="!lectureEvent">Add document</label>
+                <input type="file" class="form-control" (change)="getdownloadurl($event)">
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button *ngIf="lectureEvent" data-dismiss="modal" [disabled]="downloadURL==null" class="btn btn-sm btn-secondary" (click)="addLectureVideo(addGalareyForm.get('head').value,addGalareyForm.get('content').value,addGalareyForm.get('date').value)" >submit</button>
+            <button *ngIf="!lectureEvent" data-dismiss="modal" [disabled]="downloadURL==null"  class="btn btn-sm btn-secondary" (click)="addLectureDocument(addGalareyForm.get('head').value,addGalareyForm.get('content').value,addGalareyForm.get('date').value)" >submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="homeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+            <div class="modal-header">
+          <h1 class="modal-title" *ngIf="hides" id="exampleModalLabel">Upload Document</h1>
+          <h1 class="modal-title" *ngIf="!hides" id="exampleModalLabel">Upload Photo</h1>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="submitForm">
+            <label *ngIf="hides">Title</label>
+            <label *ngIf="!hides">Label heading</label>
+            <input type="text" class="form-control" formControlName="title">
+            <label *ngIf="hides">Date</label>
+            <label *ngIf="!hides">Label content</label>
+            <input [type]="hides? 'date' : 'text'" class="form-control" formControlName="date">
+            <label *ngIf="hides">Posted by</label>
+            <input *ngIf="hides" type="text" placeholder="name who post this one" class="form-control" formControlName="post">
+            <label *ngIf="hides">Document</label>
+            <label *ngIf="!hides">Photo</label>
+            <input type="file" class="form-control" (change)="getdownloadurl($event)" formControlName="photo">
+            <progress max="100" [value]="(uploadPercent | async)"></progress>
+           </form>
+        </div>
+        <div class="modal-footer">
+            <button *ngIf="hides" class="btn btn-outline-success" data-dismiss="modal" [disabled]="submitForm.invalid " (click)="submit1(submitForm.get('title').value,submitForm.get('date').value,downloadURL,submitForm.get('post').value)" [disabled]="downloadURL==null">submit</button>      
+          <button *ngIf="!hides" class="btn btn-outline-success" data-dismiss="modal" [disabled]="submitForm.invalid " (click)="submit(submitForm.get('title').value,submitForm.get('date').value,downloadURL)" [disabled]="downloadURL==null">submit</button> 
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<mat-tab-group>
+    <mat-tab label="Image Galarey">
+    <div *ngFor="let photo of galaPhotoList| async">
+        <mat-card style="width: 250px;height: 400px;">
+            <mat-card-header>
+                <mat-card-title>{{photo.head}}</mat-card-title>
+            </mat-card-header>
+                <img [src]="photo.downurl" width="200px" height="300px">
+        </mat-card>
+    </div>
+    </mat-tab>
+    <mat-tab label="Video Galarey">
+    <div *ngFor="let video of galaVideoList| async">
+        <mat-card style="width: 400px;height: 300px;">
+            <mat-card-header>
+                <mat-card-title>{{video.head}}</mat-card-title>
+            </mat-card-header>
+            <video width="320" height="240" controls>
+                <source [src]="video.downurl">
+            </video>
+        </mat-card>
+    </div>    
+    </mat-tab>
+</mat-tab-group>
